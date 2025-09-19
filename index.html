@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stonegate Designs | Architectural Cast Stone</title>
+    <meta name="description"
+        content="Architectural cast stone for architects and builders: surrounds, columns, balustrades, panels & restoration crafted with precision." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Design System --- */
+        :root {
+            --brand: #E8732E;
+            /* Terracotta */
+            --brand-700: #cf6224;
+            --ink: #0E0E0E;
+            /* Rich black */
+            --ink-2: #232323;
+            --paper: #F6F5F3;
+            /* Warm off-white */
+            --stone: #BFB8AF;
+            /* Stone gray */
+            --line: rgba(0, 0, 0, .08);
+            /* Hairline */
+            --rad: 16px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .container {
+            width: min(1220px, 92vw);
+            margin-inline: auto
+        }
+
+        .hairline {
+            border-top: 1px solid var(--line)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .85rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid var(--ink);
+            font-weight: 600;
+            transition: .25s ease;
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #fff
+        }
+
+        .btn.ghost {
+            background: transparent;
+            border-color: #dcdcdc
+        }
+
+        .btn.pill {
+            border-radius: 999px
+        }
+
+        .btn.xs {
+            padding: .38rem .62rem;
+            border-radius: 10px;
+            font-size: .85rem;
+            border-color: #ddd
+        }
+
+        .btn:hover {
+            transform: translateY(-1px)
+        }
+
+        .muted {
+            color: #666
+        }
+
+        /* --- NAV (Architect-grade) --- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: saturate(120%) blur(12px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav.on-hero {
+            background: linear-gradient(90deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, .12));
+            border-bottom-color: rgba(255, 255, 255, .2)
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .65rem 0;
+            gap: 1rem
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: .8rem
+        }
+
+        .mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            /* background: var(--brand); */
+            display: grid;
+            place-items: center;
+            color: #fff;
+            /* box-shadow: 0 6px 16px rgba(232, 115, 46, .35) */
+        }
+
+        .brand h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.18rem;
+            margin: 0
+        }
+
+        .menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center
+        }
+
+        .menu a {
+            padding: .5rem .35rem;
+            opacity: .95;
+            position: relative
+        }
+
+        .menu a:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            height: 2px;
+            background: var(--brand);
+            transform: scaleX(0);
+            transition: .25s;
+            transform-origin: left
+        }
+
+        .menu a:hover:after,
+        .menu a.active:after {
+            transform: scaleX(1)
+        }
+
+        /* Mega menu */
+        .menu-item {
+            position: relative
+        }
+
+        .has-mega:hover .mega {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0)
+        }
+
+        .mega {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 6px);
+            top: 100%;
+            width: min(1100px, 92vw);
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: 0 22px 60px rgba(0, 0, 0, .12);
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 16px;
+            opacity: 0;
+            pointer-events: none;
+            transition: .25s
+        }
+
+        .mega .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+
+        .mega .mini {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 14px;
+            align-items: center
+        }
+
+        .mega .mini img {
+            width: 56px;
+            height: 44px;
+            object-fit: cover;
+            border-radius: 10px
+        }
+
+        .mega .mini strong {
+            font-size: .98rem
+        }
+
+        .mega .aside {
+            background: linear-gradient(120deg, #fff7f0, #fff);
+            border: 1px solid #f2e5dc;
+            border-radius: 14px;
+            padding: 14px
+        }
+
+        .hamburger {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid #e4e4e4;
+            background: var(--brand);
+            color: #fff
+        }
+
+        /* Drawer */
+        .scrim {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .4);
+            opacity: 0;
+            pointer-events: none;
+            transition: .25s;
+            z-index: 75
+        }
+
+        .scrim.show {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .drawer {
+            position: fixed;
+            inset: 0 0 0 auto;
+            width: min(86vw, 392px);
+            background: #fff;
+            border-left: 1px solid #eaeaea;
+            transform: translateX(100%);
+            transition: .3s;
+            z-index: 90;
+            box-shadow: -28px 0 60px rgba(0, 0, 0, .2)
+        }
+
+        .drawer.open {
+            transform: none
+        }
+
+        .drawer .hdr {
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #f7f7f7, #fff);
+            border-bottom: 1px solid #eee
+        }
+
+        .drawer nav a {
+            display: block;
+            padding: 16px 18px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #f5f5f5
+        }
+
+        .drawer .cta {
+            padding: 16px
+        }
+
+        /* --- HERO (Parallax) --- */
+        .hero {
+            position: relative;
+            isolation: isolate
+        }
+
+        .hero.hero-parallax .hero-wrap {
+            position: relative;
+            min-height: min(86vh, 820px)
+        }
+
+        .hero-visual {
+            position: absolute;
+            inset: 0
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: translateY(var(--py, 0));
+            will-change: transform
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(14, 14, 14, .55) 0%, rgba(232, 115, 46, .85) 30%, rgba(232, 115, 46, .55) 52%, rgba(232, 115, 46, .12) 78%, rgba(232, 115, 46, 0) 92%)
+        }
+
+        .hero-content {
+            position: relative;
+            color: #fff;
+            padding: clamp(64px, 10vh, 120px) 0
+        }
+
+        .hero .copy {
+            width: min(1080px, 92vw);
+            margin-inline: auto;
+            padding: 0 8px
+        }
+
+        .hero h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.6rem, 6vw, 4.8rem);
+            line-height: 1.04;
+            margin: 0 0 .6rem;
+            text-wrap: balance;
+            text-shadow: 0 8px 24px rgba(0, 0, 0, .18)
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            opacity: .97;
+            margin: 0 0 1.2rem;
+            max-width: 70ch
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap
+        }
+        .hero.hero-parallax .hero-wrap{
+  min-height: clamp(520px, 90vh, 880px);
+}
+.hero-visual img{
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  transform: translate3d(0,var(--py),0);
+  will-change: transform;
+}
+.hero-visual::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(100deg,
+    rgba(14,14,14,.55) 0%,
+    rgba(232,115,46,.70) 28%,
+    rgba(232,115,46,.30) 54%,
+    rgba(232,115,46,0) 82%);
+}
+
+        /* --- Sections --- */
+        section {
+            padding: 68px 0
+        }
+
+        .section-title {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .section-title h3 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.6rem, 2.4vw, 2rem);
+            margin: 0
+        }
+
+        /* --- Services Cards --- */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px
+        }
+
+        .card {
+            grid-column: span 4;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform .25s ease, box-shadow .25s ease
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(16, 16, 16, .08)
+        }
+
+        .card .media {
+            aspect-ratio: 16/10;
+            overflow: hidden
+        }
+
+        .card .media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .card .body {
+            padding: 18px
+        }
+
+        /* --- Parallax band --- */
+        .parallax {
+            position: relative;
+            color: #fff;
+            padding: min(18vh, 160px) 0
+        }
+
+        .parallax::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -12vh;
+            bottom: -12vh;
+            background-image: var(--bg);
+            background-size: cover;
+            background-position: center;
+            transform: translateY(var(--py, 0));
+            will-change: transform;
+            z-index: -2
+        }
+
+        .parallax::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .35));
+            z-index: -1
+        }
+
+        /* --- Projects Carousel --- */
+        .carousel {
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 12px;
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+            padding: 2px 0 6px
+        }
+
+        .slide {
+            scroll-snap-align: start;
+            border-radius: 16px;
+            overflow: hidden;
+            flex: 0 0 calc(100%/var(--per, 1));
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .c-nav {
+            position: absolute;
+            inset: auto 0 100% 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-8px)
+        }
+
+        .c-btn {
+            border: 1px solid #e5e5e5;
+            background: #fff;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            cursor: pointer
+        }
+
+        /* --- Stats --- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px
+        }
+
+        .stat {
+            grid-column: span 3;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px;
+            text-align: center
+        }
+
+        /* --- Gallery (refined) --- */
+        .gallery-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0 12px;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .filters .btn {
+            padding: .48rem .9rem;
+            border-color: #ddd
+        }
+
+        .masonry {
+            --tile: 220px;
+            --ratio: 4/3;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(var(--tile), 1fr));
+            gap: 12px
+        }
+
+        .g-item {
+            display: block;
+            aspect-ratio: var(--ratio);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative
+        }
+
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .g-item:hover::after {
+            opacity: 1
+        }
+
+        .g-item::after {
+            content: "\f00e";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+            bottom: 8px;
+            background: rgba(0, 0, 0, .55);
+            color: #fff;
+            padding: 6px 8px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: .2s
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .9);
+            display: none;
+            place-items: center;
+            z-index: 95
+        }
+
+        .lightbox.open {
+            display: grid
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 86vh;
+            border-radius: 12px
+        }
+
+        .lightbox figcaption {
+            color: #e9e9e9;
+            margin-top: 10px;
+            text-align: center
+        }
+
+        .lightbox .close,
+        .lightbox .prev,
+        .lightbox .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .25);
+            color: #fff;
+            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            cursor: pointer
+        }
+
+        .lightbox .close {
+            top: 28px;
+            right: 28px;
+            transform: none
+        }
+
+        .lightbox .prev {
+            left: 24px
+        }
+
+        .lightbox .next {
+            right: 24px
+        }
+
+        /* --- Contact + Footer --- */
+        .contact {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 22px
+        }
+
+        form {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px
+        }
+
+        .field {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 12px
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            padding: .9rem;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            background: #fff
+        }
+
+        .aside {
+            background: #0f0f0f;
+            color: #fff;
+            border-radius: 16px;
+            padding: 18px
+        }
+
+        footer {
+            background: #0e0e0e;
+            color: #d9d9d9;
+            padding: 36px 0;
+            margin-top: 56px
+        }
+
+        footer .cols {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px
+        }
+
+        footer .col {
+            grid-column: span 4
+        }
+
+        /* --- Reveal --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .8s ease, transform .8s ease
+        }
+
+        .show {
+            opacity: 1;
+            transform: none
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .menu {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .cards .card,
+            .stats .stat {
+                grid-column: span 6
+            }
+
+            .contact {
+                grid-template-columns: 1fr
+            }
+
+            .masonry {
+                --tile: 200px
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .cards .card,
+            .stats .stat {
+                grid-column: span 12
+            }
+
+            .masonry {
+                --tile: 180px
+            }
+        }
+
+        @media (max-width: 560px) {
+            .masonry {
+                --tile: 160px
+            }
+
+            section {
+                padding: 56px 0
+            }
+        }
+        /* HERO */
+.hero.hero-parallax .hero-wrap{
+  min-height: clamp(520px, 90vh, 880px);
+}
+.hero-visual img{
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  transform: translate3d(0,var(--py),0);
+  will-change: transform;
+}
+/* opcional: un poco menos de naranja para mejor lectura */
+.hero-visual::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(100deg,
+    rgba(14,14,14,.55) 0%,
+    rgba(232,115,46,.70) 28%,
+    rgba(232,115,46,.30) 54%,
+    rgba(232,115,46,0) 82%);
+}
+
+/* CARDS & STATS responsive */
+.cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px;}
+.card{grid-column: span 4;}
+@media (max-width: 992px){ .card{grid-column: span 6;} }
+@media (max-width: 680px){ .card{grid-column: span 12;} }
+
+.stats{display:grid; grid-template-columns:repeat(12,1fr); gap:16px;}
+.stat{grid-column: span 3;}
+@media (max-width: 992px){ .stat{grid-column: span 6;} }
+@media (max-width: 680px){ .stat{grid-column: span 12;} }
+
+/* GALERÍA más chica por defecto */
+.masonry{
+  /* miniaturas automáticamente pequeñas en todos los anchos */
+  --tile: clamp(110px, 14vw, 160px);
+  --ratio: 4/3;
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(var(--tile),1fr));
+  gap:12px;
+}
+.g-item{aspect-ratio: var(--ratio); border-radius:14px; overflow:hidden;}
+.g-item img{width:100%; height:100%; object-fit:cover;}
+/* Si la quieres aún más chica: baja el 1er valor de clamp a 95px */
+
+/* Carrusel: altura controlada para que no se dispare */
+.slide{
+  scroll-snap-align:start;
+  border-radius:16px; overflow:hidden;
+  height: clamp(220px, 36vw, 520px);
+  aspect-ratio: 16/9;
+  flex: 0 0 auto;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="#top">
+                <div class="mark" aria-hidden="true">
+                    <img src="./img/Stonegate logo final.png" alt="">
+                </div>
+                <h1>Stonegate Designs</h1>
+            </a>
+
+            <div class="menu small">
+                <div class="menu-item has-mega">
+                    <a href="#services">Services</a>
+                    <!-- MEGA -->
+                    <div class="mega">
+                        <div class="grid">
+                            <a class="mini" href="#services"><img
+                                    src="https://images.unsplash.com/photo-1590490360339-c36e6333e26f?q=80&w=600&auto=format&fit=crop"
+                                    alt="Entries">
+                                <div><strong>Entry surrounds</strong>
+                                    <div class="muted" style="font-size:.9rem">Keystones, pilasters, headers</div>
+                                </div>
+                            </a>
+                            <a class="mini" href="#services"><img
+                                    src="https://images.unsplash.com/photo-1551298370-9d3b8d0b6df3?q=80&w=600&auto=format&fit=crop"
+                                    alt="Columns">
+                                <div><strong>Columns & capitals</strong>
+                                    <div class="muted" style="font-size:.9rem">Doric · Ionic · Custom</div>
+                                </div>
+                            </a>
+                            <a class="mini" href="#services"><img
+                                    src="https://images.unsplash.com/photo-1582582485283-0f1b5d5d2c3c?q=80&w=600&auto=format&fit=crop"
+                                    alt="Balustrades">
+                                <div><strong>Balustrades</strong>
+                                    <div class="muted" style="font-size:.9rem">Rails, balusters, newels</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="aside">
+                            <h4 style="margin:.2rem 0 .4rem;font-family:'Playfair Display',serif">Need custom profiles?
+                            </h4>
+                            <p class="muted" style="margin:0 0 .6rem">We match colors & textures and provide shop
+                                drawings for approvals.</p>
+                            <a class="btn primary" href="#contact"><i class="fa-solid fa-pen-ruler"></i> Request a
+                                quote</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#projects">Projects</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#process">Process</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact" class="btn primary"><i class="fa-solid fa-message"></i> Get a quote</a>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+    <div class="scrim" id="scrim"></div>
+    <aside class="drawer" id="drawer" aria-label="Mobile menu">
+        <div class="hdr">
+            <div class="brand" style="gap:.6rem">
+                <div class="mark"></div><strong>Stonegate Designs</strong>
+            </div>
+            <button class="btn xs" id="closeDrawer" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#process">Process</a>
+            <a href="#faq">FAQ</a>
+            <div class="cta"><a class="btn primary" href="#contact" style="width:100%;justify-content:center">Get a
+                    quote</a></div>
+        </nav>
+    </aside>
+
+    <!-- HERO -->
+    <header class="hero hero-parallax" id="top" data-speed="0.25">
+        <div class="hero-wrap">
+            <div class="hero-visual">
+                <img src="./img/hero.JPG"
+                    alt="Estate with cast stone details" />
+            </div>
+            <div class="hero-content">
+                <div class="copy">
+                    <h2>Cast stone crafted to endure — and made to match your vision.</h2>
+                    <p>From grand entries and surrounds to columns, balustrades and custom profiles, we engineer premium
+                        cast stone that integrates beautifully with new builds and restorations.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn"><i class="fa-regular fa-images"></i> View projects</a>
+                        <a href="#contact" class="btn primary"><i class="fa-solid fa-phone"></i> Request a quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h3>What we make</h3>
+                <span class="muted">Entries · Surrounds · Columns · Balustrades · Panels</span>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <div class="media"><img
+                            src="./img/card1.jpg"
+                            alt="Entryways & Surrounds"></div>
+                    <div class="body">
+                        <h4>Entryways & Surrounds</h4>
+                        <p>Custom profiles, keystones, pilasters, and headers designed to complement your architecture.
+                        </p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img
+                            src="./img/card2.jpg"
+                            alt="Columns & Capitals"></div>
+                    <div class="body">
+                        <h4>Columns & Capitals</h4>
+                        <p>Doric, Ionic, Corinthian or custom. Structural sleeves and decorative options available.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img
+                            src="./img/card3.jpg"
+                            alt="Balustrades & Railings"></div>
+                    <div class="body">
+                        <h4>Balustrades & Railings</h4>
+                        <p>Complete systems with rails, balusters, newels and mounting hardware guidance.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img
+                            src="./img/card4.jpg"
+                            alt="Sills, Bands & Trim"></div>
+                    <div class="body">
+                        <h4>Sills, Bands & Trim</h4>
+                        <p>Window/door surrounds, water tables, belt courses, and custom drip edges for performance.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img
+                            src="./img/card5.JPG"
+                            alt="Panels & Cladding"></div>
+                    <div class="body">
+                        <h4>Panels & Cladding</h4>
+                        <p>Large-format panels, coping and caps with precise color/texture matching.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img
+                            src="./img/card6.JPG"
+                            alt="Restoration & Matching"></div>
+                    <div class="body">
+                        <h4>Restoration & Matching</h4>
+                        <p>Replicate legacy pieces from photos or fragments; shop drawings and molds included.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARALLAX BAND -->
+    <section class="parallax"
+        style="--bg:url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?q=80&w=1800&auto=format&fit=crop')"
+        data-speed="0.22">
+        <div class="container">
+            <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);margin:0 0 .4rem">
+                Engineered quality, timeless look</h3>
+            <p style="max-width:720px;opacity:.95">We match colors and textures, provide shop drawings, and coordinate
+                delivery to your schedule — so your cast stone integrates perfectly with surrounding materials.</p>
+        </div>
+    </section>
+
+    <!-- PROJECTS CAROUSEL -->
+    <section id="projects" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <!-- <h3>Featured projects</h3> -->
+                <span class="muted">Slide through highlights</span>
+            </div>
+            <div class="carousel" data-name="featured">
+                <div class="c-nav">
+                    <button class="c-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="c-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="carousel-track" id="featuredTrack">
+                    <figure class="slide"><img
+                            src="./img/carrusel/DSC00309.JPG"
+                            alt="Cast stone entryway"></figure>
+                    <figure class="slide"><img
+                            src="./img/carrusel/DSC00771.JPG"
+                            alt="Ionic columns"></figure>
+                    <figure class="slide"><img
+                            src="./img/carrusel/DSC01005.JPG"
+                            alt="Balustrade terrace"></figure>
+                    <figure class="slide"><img
+                            src="./img/carrusel/DSCN0209.JPG"
+                            alt="Panel cladding"></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="reveal">
+        <div class="container">
+            <div class="stats">
+                <div class="stat"><span class="btn xs pill">Experience</span>
+                    <h4 style="font-size:2rem;margin:.4rem 0">25</h4>
+                    <p class="muted">years in cast stone</p>
+                </div>
+                <div class="stat"><span class="btn xs pill">Projects</span>
+                    <h4 style="font-size:2rem;margin:.4rem 0">850</h4>
+                    <p class="muted">completed successfully</p>
+                </div>
+                <div class="stat"><span class="btn xs pill">On‑time</span>
+                    <h4 style="font-size:2rem;margin:.4rem 0">98%</h4>
+                    <p class="muted">deliveries on schedule</p>
+                </div>
+                <div class="stat"><span class="btn xs pill">Coverage</span>
+                    <h4 style="font-size:2rem;margin:.4rem 0">Nationwide</h4>
+                    <p class="muted">shipping available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY (refined) -->
+    <section id="gallery" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h3>Project gallery</h3>
+                <span class="muted">Curated works</span>
+            </div>
+            <div class="gallery-toolbar">
+                <div class="filters">
+                    <button class="btn xs pill" data-filter="all">All</button>
+                    <button class="btn xs pill" data-filter="entry">Entries</button>
+                    <button class="btn xs pill" data-filter="column">Columns</button>
+                    <button class="btn xs pill" data-filter="balustrade">Balustrades</button>
+                    <button class="btn xs pill" data-filter="panel">Panels</button>
+                </div>
+                <div class="view">
+                    <span class="muted" style="margin-right:6px">Size</span>
+                    <button class="btn xs" data-size="s">S</button>
+                    <button class="btn xs" data-size="m">M</button>
+                    <button class="btn xs" data-size="l">L</button>
+                </div>
+            </div>
+            <div class="masonry" id="masonry">
+                <a class="g-item" data-cat="entry"><img
+                        src="https://www.limestone.com/wp-content/uploads/2019/12/11_10_19_ImpressionBlog_BY.jpg"
+                        alt="Entry surround"></a>
+                <a class="g-item" data-cat="column"><img
+                        src="https://cdn11.bigcommerce.com/s-y7zjaeumjx/images/stencil/1280x1280/products/255/690/bdsmnmd2__38377.1749181989.jpg?c=1"
+                        alt="Columns"></a>
+                <a class="g-item" data-cat="balustrade"><img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWg-DjYJf5SmsctQ1f-S3nang9rSQzRzpnIg&s"
+                        alt="Balustrade"></a>
+                <a class="g-item" data-cat="panel"><img
+                        src="https://www.bethelmendels.com/mendelsmedia/2024/03/Screenshot_20240123-122737.jpg"
+                        alt="Panels"></a>
+                <a class="g-item" data-cat="entry"><img
+                        src="https://i.pinimg.com/736x/c8/75/00/c8750001e128a130c742af923aba2162.jpg"
+                        alt="Grand entry"></a>
+                <a class="g-item" data-cat="column"><img
+                        src="https://genstone.com/wp-content/uploads/2024/08/Faux-Stone-Columns-and-Fireplace-Surround.jpg"
+                        alt="Column detail"></a>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <figure class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+            <img id="lbImg" alt="Project photo" />
+            <figcaption id="lbCap" class="muted small"></figcaption>
+            <button class="close" id="lbClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <button class="prev" id="lbPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="next" id="lbNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        </figure>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h3>Request a quote</h3><span class="muted">Tell us about your project</span>
+            </div>
+            <div class="contact">
+                <form method="post" action="https://formsubmit.co/YOUR_EMAIL_HERE" enctype="multipart/form-data">
+                    <div class="field"><label for="name">Name</label><input id="name" name="name" required
+                            placeholder="Your full name" /></div>
+                    <div class="field"><label for="email">Email</label><input id="email" type="email" name="email"
+                            required placeholder="you@company.com" /></div>
+                    <div class="field"><label for="phone">Phone</label><input id="phone" name="phone"
+                            placeholder="(123) 456‑7890" /></div>
+                    <div class="field"><label for="service">Service</label><select id="service" name="service">
+                            <option>Entry surrounds</option>
+                            <option>Columns</option>
+                            <option>Balustrades</option>
+                            <option>Panels / Cladding</option>
+                            <option>Sills / Bands / Trim</option>
+                            <option>Restoration / Matching</option>
+                        </select></div>
+                    <div class="field"><label for="message">Project details</label><textarea id="message" name="message"
+                            placeholder="Dimensions, quantities, finish, timeline…"></textarea></div>
+                    <div class="field"><label for="file">Attach drawings/photos (optional)</label><input id="file"
+                            name="attachment" type="file" /></div>
+                    <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send
+                        request</button>
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" value="New quote request — Stonegate Designs">
+                </form>
+                <aside class="aside">
+                    <h4 style="margin:.2rem 0 1rem;font-family:'Playfair Display',serif">Contact</h4>
+                    <ul style="list-style:none;padding:0;margin:0">
+                        <li><i class="fa-solid fa-phone"></i> (123) 456‑7890</li>
+                        <li><i class="fa-regular fa-envelope"></i> hello@stonegate-designs.com</li>
+                        <li><i class="fa-solid fa-location-dot"></i> [City], [State]</li>
+                        <li><i class="fa-regular fa-clock"></i> Mon–Fri 8:00–17:00</li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="cols">
+                <div class="col">
+                    <div class="brand" style="margin-bottom:8px">
+                        <div class="mark" aria-hidden="true">
+                            <img src="./img/Stonegate logo final.png" alt="">
+                        </div>
+                        <h1 style="margin:0">Stonegate Designs</h1>
+                    </div>
+                    <p class="muted">Architectural cast stone for residential, commercial and civic projects. Custom
+                        molds, color matching and shop drawings provided.</p>
+                </div>
+                <div class="col">
+                    <h4 style="margin:0 0 .6rem">Quick links</h4>
+                    <p class="small"><a href="#services">Services</a> · <a href="#projects">Projects</a> · <a
+                            href="#gallery">Gallery</a> · <a href="#process">Process</a> · <a href="#faq">FAQ</a> · <a
+                            href="#contact">Contact</a></p>
+                </div>
+                <div class="col">
+                    <h4 style="margin:0 0 .6rem">Follow</h4>
+                    <p class="small"><a href="#">Instagram</a> · <a href="#">Facebook</a> · <a href="#">LinkedIn</a></p>
+                </div>
+            </div>
+            <p class="small" style="opacity:.6;margin-top:18px">© <span id="year"></span> Stonegate Designs. All rights
+                reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // nav on-hero tint + active link while scrolling
+        const nav = document.getElementById('nav');
+        const topHero = document.querySelector('.hero-parallax');
+        const sections = [...document.querySelectorAll('section, header.hero')];
+        const links = [...document.querySelectorAll('.menu a[href^="#"]')];
+        const ids = links.map(a => a.getAttribute('href'));
+        const navObs = new IntersectionObserver((entries) => { entries.forEach(e => nav.classList.toggle('on-hero', e.isIntersecting)); }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+        if (topHero) navObs.observe(topHero);
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+                }
+            });
+        }, { rootMargin: '-50% 0px -45% 0px', threshold: 0 });
+        sections.forEach(s => spy.observe(s));
+
+        // drawer
+        const drawer = document.getElementById('drawer');
+        const scrim = document.getElementById('scrim');
+        const openBtn = document.getElementById('hamburger');
+        const closeBtn = document.getElementById('closeDrawer');
+        const toggleDrawer = (open) => { drawer.classList.toggle('open', open); scrim.classList.toggle('show', open); document.body.style.overflow = open ? 'hidden' : 'auto'; };
+        openBtn.addEventListener('click', () => toggleDrawer(true));
+        closeBtn.addEventListener('click', () => toggleDrawer(false));
+        scrim.addEventListener('click', () => toggleDrawer(false));
+        drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+
+        // parallax (hero + bands)
+        // Parallax suave, limitado y con fallbacks
+        const pxSections = document.querySelectorAll('.parallax, .hero-parallax');
+        const mReduce = matchMedia('(prefers-reduced-motion: reduce)');
+        const mMobile = matchMedia('(max-width: 768px)');
+
+        function parallaxTick() {
+            const disabled = mReduce.matches || mMobile.matches;
+            pxSections.forEach(sec => {
+                if (disabled) { sec.style.setProperty('--py', '0px'); return; }
+                const rect = sec.getBoundingClientRect();
+                // Centramos el cálculo para que el movimiento sea sutil y elegante
+                const centerOffset = (rect.top + rect.height / 2) - (innerHeight / 2);
+                const speed = parseFloat(sec.dataset.speed || 0.25);
+                const y = Math.max(-120, Math.min(120, -centerOffset * speed));
+                sec.style.setProperty('--py', `${y.toFixed(1)}px`);
+            });
+            requestAnimationFrame(parallaxTick);
+        }
+        requestAnimationFrame(parallaxTick);
+
+
+        // reveal on scroll
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); revealObs.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // carousel controls
+        const carousel = document.querySelector('.carousel');
+        const track = carousel.querySelector('.carousel-track');
+        const prev = carousel.querySelector('.prev');
+        const next = carousel.querySelector('.next');
+        const scrollByAmount = () => Math.min(track.clientWidth * 0.95, 900);
+        prev.addEventListener('click', () => track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }));
+        next.addEventListener('click', () => track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }));
+
+        // gallery filter + size
+        const filterButtons = document.querySelectorAll('#gallery .filters .btn');
+        const gItems = Array.from(document.querySelectorAll('.g-item'));
+        const masonry = document.getElementById('masonry');
+        filterButtons.forEach(btn => btn.addEventListener('click', () => {
+            const f = btn.dataset.filter;
+            gItems.forEach(item => item.style.display = (f === 'all' || item.dataset.cat === f) ? 'block' : 'none');
+        }));
+        document.querySelectorAll('.gallery-toolbar .view .btn').forEach(b => {
+            b.addEventListener('click', () => {
+                const sz = b.dataset.size; if (sz === 's') masonry.style.setProperty('--tile', '160px');
+                if (sz === 'm') masonry.style.setProperty('--tile', '220px');
+                if (sz === 'l') masonry.style.setProperty('--tile', '320px');
+            });
+        });
+
+        // lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbCap = document.getElementById('lbCap');
+        const lbPrev = document.getElementById('lbPrev');
+        const lbNext = document.getElementById('lbNext');
+        const lbClose = document.getElementById('lbClose');
+        let lbIndex = 0;
+        const visible = () => gItems.filter(i => i.style.display !== 'none');
+        const openLb = (idx) => { lbIndex = idx; const v = visible(); const el = v[lbIndex]; lbImg.src = el.querySelector('img').src; lbCap.textContent = el.querySelector('img').alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+        const move = (dir) => { const v = visible(); lbIndex = (lbIndex + dir + v.length) % v.length; lbImg.src = v[lbIndex].querySelector('img').src; lbCap.textContent = v[lbIndex].querySelector('img').alt || ''; };
+        const closeLb = () => { lb.classList.remove('open'); document.body.style.overflow = 'auto'; };
+        gItems.forEach((item) => item.addEventListener('click', () => openLb(visible().indexOf(item))));
+        lbPrev.addEventListener('click', () => move(-1));
+        lbNext.addEventListener('click', () => move(1));
+        lbClose.addEventListener('click', closeLb);
+        addEventListener('keydown', (e) => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowLeft') move(-1); if (e.key === 'ArrowRight') move(1); });
+    </script>
+</body>
+
+</html>
