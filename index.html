@@ -28,11 +28,17 @@
             --paper: #F6F5F3;
             /* Warm off-white */
             --stone: #BFB8AF;
+            --s0: #f4f3f1;
+            /* claro */
+            --s1: #ebe9e6;
+            /* medio */
+            --s2: #dfdcd7;
+            /* profundo */
             /* Stone gray */
             --line: rgba(0, 0, 0, .08);
             /* Hairline */
             --rad: 16px;
-            --whatsapp: #25D366;
+            --whatsapp: #E8732E;
         }
 
         *,
@@ -47,7 +53,7 @@
 
         body {
             margin: 0;
-            background: var(--paper);
+            background: var(--stone);
             color: var(--ink);
             font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
         }
@@ -385,23 +391,30 @@
             gap: .8rem;
             flex-wrap: wrap
         }
-        .hero.hero-parallax .hero-wrap{
-  min-height: clamp(520px, 90vh, 880px);
-}
-.hero-visual img{
-  width:100%; height:100%;
-  object-fit:cover; object-position:center;
-  transform: translate3d(0,var(--py),0);
-  will-change: transform;
-}
-.hero-visual::after{
-  content:""; position:absolute; inset:0;
-  background: linear-gradient(100deg,
-    rgba(14,14,14,.55) 0%,
-    rgba(232,115,46,.70) 28%,
-    rgba(232,115,46,.30) 54%,
-    rgba(232,115,46,0) 82%);
-}
+
+        .hero.hero-parallax .hero-wrap {
+            min-height: clamp(520px, 90vh, 880px);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: translate3d(0, var(--py), 0);
+            will-change: transform;
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg,
+                    rgba(14, 14, 14, .55) 0%,
+                    rgba(232, 115, 46, .70) 28%,
+                    rgba(232, 115, 46, .30) 54%,
+                    rgba(232, 115, 46, 0) 82%);
+        }
 
         /* --- Sections --- */
         section {
@@ -432,7 +445,7 @@
 
         .card {
             grid-column: span 4;
-            background: #fff;
+            background: #efbca5;
             border: 1px solid var(--line);
             border-radius: 18px;
             overflow: hidden;
@@ -545,11 +558,16 @@
 
         .stat {
             grid-column: span 3;
-            background: #fff;
+            background: #ffffff;
             border: 1px solid var(--line);
             border-radius: 18px;
             padding: 22px;
-            text-align: center
+            text-align: center;
+            background:
+                radial-gradient(120% 140% at 100% -10%, rgba(232, 115, 46, .10), rgba(232, 115, 46, 0) 60%),
+                linear-gradient(180deg, #FFF6EF 0%, #FFEBDD 100%);
+            border: 1px solid #F3D6C3;
+            box-shadow: 0 10px 30px rgba(232, 115, 46, .12);
         }
 
         /* --- Gallery (refined) --- */
@@ -774,68 +792,149 @@
                 padding: 56px 0
             }
         }
+
         /* HERO */
-.hero.hero-parallax .hero-wrap{
-  min-height: clamp(520px, 90vh, 880px);
-}
-.hero-visual img{
-  width:100%; height:100%;
-  object-fit:cover; object-position:center;
-  transform: translate3d(0,var(--py),0);
-  will-change: transform;
-}
-/* opcional: un poco menos de naranja para mejor lectura */
-.hero-visual::after{
-  content:""; position:absolute; inset:0;
-  background: linear-gradient(100deg,
-    rgba(14,14,14,.55) 0%,
-    rgba(232,115,46,.70) 28%,
-    rgba(232,115,46,.30) 54%,
-    rgba(232,115,46,0) 82%);
+        .hero.hero-parallax .hero-wrap {
+            min-height: clamp(520px, 90vh, 880px);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: translate3d(0, var(--py), 0);
+            will-change: transform;
+        }
+
+        /* opcional: un poco menos de naranja para mejor lectura */
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg,
+                    rgba(14, 14, 14, .55) 0%,
+                    rgba(232, 115, 46, .70) 28%,
+                    rgba(232, 115, 46, .30) 54%,
+                    rgba(232, 115, 46, 0) 82%);
+        }
+
+        /* CARDS & STATS responsive */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            grid-column: span 4;
+        }
+
+        @media (max-width: 992px) {
+            .card {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .card {
+                grid-column: span 12;
+            }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        .stat {
+            grid-column: span 3;
+        }
+
+        @media (max-width: 992px) {
+            .stat {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .stat {
+                grid-column: span 12;
+            }
+        }
+
+        /* GALERÍA más chica por defecto */
+        .masonry {
+            /* miniaturas automáticamente pequeñas en todos los anchos */
+            --tile: clamp(110px, 14vw, 160px);
+            --ratio: 4/3;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(var(--tile), 1fr));
+            gap: 12px;
+        }
+
+        .g-item {
+            aspect-ratio: var(--ratio);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Si la quieres aún más chica: baja el 1er valor de clamp a 95px */
+
+        /* Carrusel: altura controlada para que no se dispare */
+        .slide {
+            scroll-snap-align: start;
+            border-radius: 16px;
+            overflow: hidden;
+            height: clamp(220px, 36vw, 520px);
+            aspect-ratio: 16/9;
+            flex: 0 0 auto;
+        }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 3rem;
+            z-index: 999;
+        }
+
+        .whatsapp i {
+            color: var(--whatsapp);
+        }
+        .btn.is-active,
+.btn[aria-pressed="true"]{
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(232,115,46,.25);
 }
 
-/* CARDS & STATS responsive */
-.cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px;}
-.card{grid-column: span 4;}
-@media (max-width: 992px){ .card{grid-column: span 6;} }
-@media (max-width: 680px){ .card{grid-column: span 12;} }
-
-.stats{display:grid; grid-template-columns:repeat(12,1fr); gap:16px;}
-.stat{grid-column: span 3;}
-@media (max-width: 992px){ .stat{grid-column: span 6;} }
-@media (max-width: 680px){ .stat{grid-column: span 12;} }
-
-/* GALERÍA más chica por defecto */
-.masonry{
-  /* miniaturas automáticamente pequeñas en todos los anchos */
-  --tile: clamp(110px, 14vw, 160px);
-  --ratio: 4/3;
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(var(--tile),1fr));
-  gap:12px;
+/* Opcional: mejor foco con teclado */
+.filters .btn:focus-visible,
+.view .btn:focus-visible{
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 12px;
 }
-.g-item{aspect-ratio: var(--ratio); border-radius:14px; overflow:hidden;}
-.g-item img{width:100%; height:100%; object-fit:cover;}
-/* Si la quieres aún más chica: baja el 1er valor de clamp a 95px */
+/* Botón Ver más: solo visible en móvil */
+.gallery-more{ text-align:center; margin-top:12px; }
+@media (min-width:681px){ #galleryMore{ display:none; } }
 
-/* Carrusel: altura controlada para que no se dispare */
-.slide{
-  scroll-snap-align:start;
-  border-radius:16px; overflow:hidden;
-  height: clamp(220px, 36vw, 520px);
-  aspect-ratio: 16/9;
-  flex: 0 0 auto;
+/* Filtro activo en naranja */
+.filters .btn.active{
+  background: var(--brand);
+  border-color: var(--brand);
+  color:#fff;
 }
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 3rem;
-    z-index: 999;
-  }
-  .whatsapp i {
-    color: var(--whatsapp);
-  }
+
     </style>
 </head>
 
@@ -853,44 +952,11 @@
             <div class="menu small">
                 <div class="menu-item has-mega">
                     <a href="#services">Services</a>
-                    <!-- MEGA -->
-                    <div class="mega">
-                        <div class="grid">
-                            <a class="mini" href="#services"><img
-                                    src="https://images.unsplash.com/photo-1590490360339-c36e6333e26f?q=80&w=600&auto=format&fit=crop"
-                                    alt="Entries">
-                                <div><strong>Entry surrounds</strong>
-                                    <div class="muted" style="font-size:.9rem">Keystones, pilasters, headers</div>
-                                </div>
-                            </a>
-                            <a class="mini" href="#services"><img
-                                    src="https://images.unsplash.com/photo-1551298370-9d3b8d0b6df3?q=80&w=600&auto=format&fit=crop"
-                                    alt="Columns">
-                                <div><strong>Columns & capitals</strong>
-                                    <div class="muted" style="font-size:.9rem">Doric · Ionic · Custom</div>
-                                </div>
-                            </a>
-                            <a class="mini" href="#services"><img
-                                    src="https://images.unsplash.com/photo-1582582485283-0f1b5d5d2c3c?q=80&w=600&auto=format&fit=crop"
-                                    alt="Balustrades">
-                                <div><strong>Balustrades</strong>
-                                    <div class="muted" style="font-size:.9rem">Rails, balusters, newels</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="aside">
-                            <h4 style="margin:.2rem 0 .4rem;font-family:'Playfair Display',serif">Need custom profiles?
-                            </h4>
-                            <p class="muted" style="margin:0 0 .6rem">We match colors & textures and provide shop
-                                drawings for approvals.</p>
-                            <a class="btn primary" href="#contact"><i class="fa-solid fa-pen-ruler"></i> Request a
-                                quote</a>
-                        </div>
-                    </div>
+
                 </div>
                 <a href="#projects">Projects</a>
                 <a href="#gallery">Gallery</a>
-                <a href="#process">Process</a>
+                <!-- <a href="#process">Process</a> -->
                 <a href="#faq">FAQ</a>
                 <a href="#contact" class="btn primary"><i class="fa-solid fa-message"></i> Get a quote</a>
             </div>
@@ -910,7 +976,7 @@
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
             <a href="#gallery">Gallery</a>
-            <a href="#process">Process</a>
+            <!-- <a href="#process">Process</a> -->
             <a href="#faq">FAQ</a>
             <div class="cta"><a class="btn primary" href="#contact" style="width:100%;justify-content:center">Get a
                     quote</a></div>
@@ -921,8 +987,7 @@
     <header class="hero hero-parallax" id="top" data-speed="0.25">
         <div class="hero-wrap">
             <div class="hero-visual">
-                <img src="./img/hero.JPG"
-                    alt="Estate with cast stone details" />
+                <img src="./img/hero.JPG" alt="Estate with cast stone details" />
             </div>
             <div class="hero-content">
                 <div class="copy">
@@ -931,7 +996,10 @@
                         cast stone that integrates beautifully with new builds and restorations.</p>
                     <div class="hero-cta">
                         <a href="#projects" class="btn"><i class="fa-regular fa-images"></i> View projects</a>
-                        <a href="#contact" class="btn primary"><i class="fa-solid fa-phone"></i> Request a quote</a>
+                        <a href="tel:+11234567890" class="btn primary">
+                            <i class="fa-solid fa-phone"></i> Request a quote
+                          </a>
+                          
                     </div>
                 </div>
             </div>
@@ -947,9 +1015,7 @@
             </div>
             <div class="cards">
                 <article class="card">
-                    <div class="media"><img
-                            src="./img/card1.jpg"
-                            alt="Entryways & Surrounds"></div>
+                    <div class="media"><img src="./img/card1.jpg" alt="Entryways & Surrounds"></div>
                     <div class="body">
                         <h4>Entryways & Surrounds</h4>
                         <p>Custom profiles, keystones, pilasters, and headers designed to complement your architecture.
@@ -957,45 +1023,35 @@
                     </div>
                 </article>
                 <article class="card">
-                    <div class="media"><img
-                            src="./img/card2.jpg"
-                            alt="Columns & Capitals"></div>
+                    <div class="media"><img src="/img//gallery/gallery54.jpg" alt="Columns & Capitals"></div>
                     <div class="body">
                         <h4>Columns & Capitals</h4>
                         <p>Doric, Ionic, Corinthian or custom. Structural sleeves and decorative options available.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <div class="media"><img
-                            src="./img/card3.jpg"
-                            alt="Balustrades & Railings"></div>
+                    <div class="media"><img src="./img/card3.jpg" alt="Balustrades & Railings"></div>
                     <div class="body">
                         <h4>Balustrades & Railings</h4>
                         <p>Complete systems with rails, balusters, newels and mounting hardware guidance.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <div class="media"><img
-                            src="./img/card4.jpg"
-                            alt="Sills, Bands & Trim"></div>
+                    <div class="media"><img src="/img//gallery/gallery13.JPG" alt="Sills, Bands & Trim"></div>
                     <div class="body">
                         <h4>Sills, Bands & Trim</h4>
                         <p>Window/door surrounds, water tables, belt courses, and custom drip edges for performance.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <div class="media"><img
-                            src="./img/card5.JPG"
-                            alt="Panels & Cladding"></div>
+                    <div class="media"><img src="./img/card5.JPG" alt="Panels & Cladding"></div>
                     <div class="body">
                         <h4>Panels & Cladding</h4>
                         <p>Large-format panels, coping and caps with precise color/texture matching.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <div class="media"><img
-                            src="./img/card6.JPG"
-                            alt="Restoration & Matching"></div>
+                    <div class="media"><img src="./img/card6.JPG" alt="Restoration & Matching"></div>
                     <div class="body">
                         <h4>Restoration & Matching</h4>
                         <p>Replicate legacy pieces from photos or fragments; shop drawings and molds included.</p>
@@ -1006,9 +1062,7 @@
     </section>
 
     <!-- PARALLAX BAND -->
-    <section class="parallax"
-        style="--bg:url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?q=80&w=1800&auto=format&fit=crop')"
-        data-speed="0.22">
+    <section class="parallax" style="--bg:url('./img/background.JPG')" data-speed="0.22">
         <div class="container">
             <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);margin:0 0 .4rem">
                 Engineered quality, timeless look</h3>
@@ -1030,18 +1084,10 @@
                     <button class="c-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
                 <div class="carousel-track" id="featuredTrack">
-                    <figure class="slide"><img
-                            src="./img/carrusel/DSC00309.JPG"
-                            alt="Cast stone entryway"></figure>
-                    <figure class="slide"><img
-                            src="./img/carrusel/DSC00771.JPG"
-                            alt="Ionic columns"></figure>
-                    <figure class="slide"><img
-                            src="./img/carrusel/DSC01005.JPG"
-                            alt="Balustrade terrace"></figure>
-                    <figure class="slide"><img
-                            src="./img/carrusel/DSCN0209.JPG"
-                            alt="Panel cladding"></figure>
+                    <figure class="slide"><img src="./img/carrusel/DSC00309.JPG" alt="Cast stone entryway"></figure>
+                    <figure class="slide"><img src="./img/carrusel/DSC00771.JPG" alt="Ionic columns"></figure>
+                    <figure class="slide"><img src="./img/carrusel/DSC01005.JPG" alt="Balustrade terrace"></figure>
+                    <figure class="slide"><img src="./img/carrusel/DSCN0209.JPG" alt="Panel cladding"></figure>
                 </div>
             </div>
         </div>
@@ -1094,25 +1140,73 @@
                 </div>
             </div>
             <div class="masonry" id="masonry">
-                <a class="g-item" data-cat="entry"><img
-                        src="https://www.limestone.com/wp-content/uploads/2019/12/11_10_19_ImpressionBlog_BY.jpg"
-                        alt="Entry surround"></a>
-                <a class="g-item" data-cat="column"><img
-                        src="https://cdn11.bigcommerce.com/s-y7zjaeumjx/images/stencil/1280x1280/products/255/690/bdsmnmd2__38377.1749181989.jpg?c=1"
-                        alt="Columns"></a>
-                <a class="g-item" data-cat="balustrade"><img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWg-DjYJf5SmsctQ1f-S3nang9rSQzRzpnIg&s"
-                        alt="Balustrade"></a>
-                <a class="g-item" data-cat="panel"><img
-                        src="https://www.bethelmendels.com/mendelsmedia/2024/03/Screenshot_20240123-122737.jpg"
-                        alt="Panels"></a>
-                <a class="g-item" data-cat="entry"><img
-                        src="https://i.pinimg.com/736x/c8/75/00/c8750001e128a130c742af923aba2162.jpg"
-                        alt="Grand entry"></a>
-                <a class="g-item" data-cat="column"><img
-                        src="https://genstone.com/wp-content/uploads/2024/08/Faux-Stone-Columns-and-Fireplace-Surround.jpg"
-                        alt="Column detail"></a>
-            </div>
+                <!-- <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery0.jpg"  alt="Entry surround"></a> -->
+                <!-- <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery1.jpg"  alt="Window surround"></a> -->
+                <!-- <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery2.jpg"  alt="Grand entry"></a> -->
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery3.jpg"  alt="Portico columns"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery4.jpg"  alt="Curved bay/paneling"></a>
+                <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery5.jpg"  alt="Upper balcony balustrade"></a>
+                <!-- <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery6.jpg"  alt="Arcade with balustrade"></a> -->
+                <!-- <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery7.JPG"  alt="Arched door entry"></a> -->
+              
+                <!-- <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery8.JPG"  alt="Facade with balcony balusters"></a> -->
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery9.JPG"  alt="Facade with columns"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery10.JPG" alt="Portico columns"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery11.JPG" alt="Wall panels / surrounds"></a>
+                <!-- <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery12.JPG" alt="Pilasters / panels"></a> -->
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery13.JPG" alt="Arches with columns"></a>
+                <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery14.JPG" alt="Door surround entry"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery15.JPG" alt="Porch columns"></a>
+              
+                <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery16.JPG" alt="Grand entry with columns"></a>
+                <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery17.JPG" alt="Round balcony balustrade"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery18.JPG" alt="Porch columns"></a>
+                <!-- <a class="g-item" data-cat="column"><img src="/img//gallery/gallery19.JPG" alt="Facade with columns"></a> -->
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery20.JPG" alt="Window/door panels"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery21.JPG" alt="Columned porch"></a>
+                <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery22.JPG" alt="Entry surround"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery23.JPG" alt="Columns with entry"></a>
+              
+                <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery24.JPG" alt="Formal entry"></a>
+                <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery25.JPG" alt="Interior balcony/rail"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery26.JPG" alt="Arcade / columns"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery27.JPG" alt="Panelized facade"></a>
+                <!-- <a class="g-item" data-cat="column"><img src="/img//gallery/gallery27.JPG" alt="Portico columns (dup file)"></a> -->
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery28.jpg" alt="Columns at entry"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery29.jpg" alt="Columns at entry"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery30.jpg" alt="Columns / turret facade"></a>
+              
+                <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery31.jpg" alt="Curved patio balustrade"></a>
+                <!-- <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery32.jpg" alt="Stair balustrade"></a> -->
+                <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery33.jpg" alt="Stair balustrade"></a>
+                <!-- <a class="g-item" data-cat="balustrade"><img src="/img//gallery/gallery34.jpg" alt="Garden/path balustrade"></a> -->
+                <!-- <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery35.jpg" alt="Window surround / panel"></a> -->
+                <a class="g-item" data-cat="entry"><img src="/img//gallery/gallery36.jpg" alt="Arched entry"></a>
+                <a class="g-item" data-cat="column"><img src="/img//gallery/gallery37.jpg" alt="Column capital / shaft"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery38.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery39.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery40.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery41.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery42.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery43.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery44.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery45.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery46.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery47.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery48.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery49.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery50.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery51.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery52.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery53.jpg" alt="Window surround / panel"></a>
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery54.jpg" alt="Window surround / panel"></a>
+                <!-- <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery55.jpg" alt="Window surround / panel"></a> -->
+                <a class="g-item" data-cat="panel"><img src="/img//gallery/gallery56.jpg" alt="Window surround / panel"></a>
+              </div>
+              <div class="gallery-more">
+                <button id="galleryMore" class="btn xs pill">View more</button>
+              </div>
+              
         </div>
 
         <!-- Lightbox -->
@@ -1128,54 +1222,82 @@
     <!-- CONTACT -->
     <section id="contact" class="reveal">
         <div class="container">
-            <div class="section-title">
-                <h3>Request a quote</h3><span class="muted">Tell us about your project</span>
-            </div>
-            <div class="contact">
-                <form method="post" action="https://formsubmit.co/YOUR_EMAIL_HERE" enctype="multipart/form-data">
-                    <div class="field"><label for="name">Name</label><input id="name" name="name" required
-                            placeholder="Your full name" /></div>
-                    <div class="field"><label for="email">Email</label><input id="email" type="email" name="email"
-                            required placeholder="you@company.com" /></div>
-                    <div class="field"><label for="phone">Phone</label><input id="phone" name="phone"
-                            placeholder="(123) 456‑7890" /></div>
-                    <div class="field"><label for="service">Service</label><select id="service" name="service">
-                            <option>Entry surrounds</option>
-                            <option>Columns</option>
-                            <option>Balustrades</option>
-                            <option>Panels / Cladding</option>
-                            <option>Sills / Bands / Trim</option>
-                            <option>Restoration / Matching</option>
-                        </select></div>
-                    <div class="field"><label for="message">Project details</label><textarea id="message" name="message"
-                            placeholder="Dimensions, quantities, finish, timeline…"></textarea></div>
-                    <div class="field"><label for="file">Attach drawings/photos (optional)</label><input id="file"
-                            name="attachment" type="file" /></div>
-                    <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send
-                        request</button>
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_subject" value="New quote request — Stonegate Designs">
-                </form>
-                <aside class="aside">
-                    <h4 style="margin:.2rem 0 1rem;font-family:'Playfair Display',serif">Contact</h4>
-                    <ul style="list-style:none;padding:0;margin:0">
-                        <li><i class="fa-solid fa-phone"></i> (123) 456‑7890</li>
-                        <li><i class="fa-regular fa-envelope"></i> hello@stonegate-designs.com</li>
-                        <li><i class="fa-solid fa-location-dot"></i> [City], [State]</li>
-                        <li><i class="fa-regular fa-clock"></i> Mon–Fri 8:00–17:00</li>
-                    </ul>
-                </aside>
-            </div>
+          <div class="section-title">
+            <h3>Request a quote</h3><span class="muted">Tell us about your project</span>
+          </div>
+      
+          <div class="contact">
+            <!-- ⚠️ Reemplaza TU_CORREO_REAL por el correo que recibirá las solicitudes -->
+            <form method="post"
+                  action="https://formsubmit.co/ricardokelebra@gmail.com"
+                  enctype="multipart/form-data">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" required placeholder="Your full name" />
+              </div>
+      
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required placeholder="you@company.com" />
+              </div>
+      
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" placeholder="(123) 456-7890" />
+              </div>
+      
+              <div class="field">
+                <label for="service">Service</label>
+                <select id="service" name="service">
+                  <option>Entry surrounds</option>
+                  <option>Columns</option>
+                  <option>Balustrades</option>
+                  <option>Panels / Cladding</option>
+                  <option>Sills / Bands / Trim</option>
+                  <option>Restoration / Matching</option>
+                </select>
+              </div>
+      
+              <div class="field">
+                <label for="message">Project details</label>
+                <textarea id="message" name="message" placeholder="Dimensions, quantities, finish, timeline…"></textarea>
+              </div>
+      
+              <!-- ===== FormSubmit: opciones ===== -->
+              <input type="hidden" name="_captcha" value="false"><!-- desactiva captcha -->
+              <input type="hidden" name="_template" value="table"><!-- correo en tabla -->
+              <input type="hidden" name="_subject" value="New quote request — Stonegate Designs"><!-- asunto -->
+              <input type="hidden" name="_next" value="/thank-you.html"><!-- URL de gracias (ajústala) -->
+              <!-- auto-respuesta al cliente (opcional) -->
+              <input type="hidden" name="_autoresponse" value="Thanks! We received your request and will get back to you shortly.">
+      
+              <!-- Honeypot anti-spam (no borrar) -->
+              <input type="text" name="_honey" style="display:none">
+      
+              <button class="btn primary" type="submit">
+                <i class="fa-solid fa-paper-plane"></i> Send request
+              </button>
+            </form>
+      
+            <aside class="aside">
+              <h4 style="margin:.2rem 0 1rem;font-family:'Playfair Display',serif">Contact</h4>
+              <ul style="list-style:none;padding:0;margin:0">
+                <li><i class="fa-solid fa-phone"></i> (123) 456-7890</li>
+                <li><i class="fa-regular fa-envelope"></i> hello@stonegate-designs.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> [City], [State]</li>
+                <li><i class="fa-regular fa-clock"></i> Mon–Fri 8:00–17:00</li>
+              </ul>
+            </aside>
+          </div>
         </div>
-    </section>
+      </section>
+      
+<!-- CALL (flotante) -->
+<a href="tel:+525619959385" class="whatsapp"
+   aria-label="Llamar a Stonegate Designs al 56 1995 9385">
+  <i class="fa-solid fa-phone"></i>
+</a>
 
-      <!-- WHATSAPP -->
-
-    <a href="https://wa.me/525619959385?text=Hola%20me%20interesa%20un%20grabado%20láser" class="whatsapp" target="_blank"
-    aria-label="Contáctanos por WhatsApp">
-    <i class="fa-brands fa-square-whatsapp fa-xl"></i>
-  </a>
 
 
     <footer>
@@ -1194,8 +1316,7 @@
                 <div class="col">
                     <h4 style="margin:0 0 .6rem">Quick links</h4>
                     <p class="small"><a href="#services">Services</a> · <a href="#projects">Projects</a> · <a
-                            href="#gallery">Gallery</a> · <a href="#process">Process</a> · <a href="#faq">FAQ</a> · <a
-                            href="#contact">Contact</a></p>
+                            href="#gallery">Gallery</a> · <a href="#faq">FAQ</a> · <a href="#contact">Contact</a></p>
                 </div>
                 <div class="col">
                     <h4 style="margin:0 0 .6rem">Follow</h4>
@@ -1276,21 +1397,86 @@
         prev.addEventListener('click', () => track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }));
         next.addEventListener('click', () => track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }));
 
-        // gallery filter + size
-        const filterButtons = document.querySelectorAll('#gallery .filters .btn');
-        const gItems = Array.from(document.querySelectorAll('.g-item'));
-        const masonry = document.getElementById('masonry');
-        filterButtons.forEach(btn => btn.addEventListener('click', () => {
-            const f = btn.dataset.filter;
-            gItems.forEach(item => item.style.display = (f === 'all' || item.dataset.cat === f) ? 'block' : 'none');
-        }));
-        document.querySelectorAll('.gallery-toolbar .view .btn').forEach(b => {
-            b.addEventListener('click', () => {
-                const sz = b.dataset.size; if (sz === 's') masonry.style.setProperty('--tile', '160px');
-                if (sz === 'm') masonry.style.setProperty('--tile', '220px');
-                if (sz === 'l') masonry.style.setProperty('--tile', '320px');
-            });
-        });
+// ========== Gallery: filtro + tamaños + paginado móvil ==========
+const masonry = document.getElementById('masonry');
+const gItems = Array.from(masonry.querySelectorAll('.g-item'));
+const filterButtons = document.querySelectorAll('#gallery .filters .btn');
+const sizeButtons = document.querySelectorAll('.gallery-toolbar .view .btn');
+const moreBtn = document.getElementById('galleryMore');
+
+const MOBILE_BREAK = 680;           // px
+const BATCH = 5;                    // cuántas por “ver más”
+let activeFilter = 'all';
+let showCount = Infinity;           // en desktop mostramos todo
+
+const isMobile = () => matchMedia(`(max-width:${MOBILE_BREAK}px)`).matches;
+
+function visibleItems() {
+  return gItems.filter(it => activeFilter === 'all' || it.dataset.cat === activeFilter);
+}
+
+function renderGallery() {
+  const matched = visibleItems();
+  // Oculta todo
+  gItems.forEach(el => el.style.display = 'none');
+  // Límite según móvil
+  const limit = isMobile() ? showCount : Infinity;
+  matched.slice(0, limit).forEach(el => el.style.display = 'block');
+
+  // Ver más
+  const remaining = matched.length - (isMobile() ? showCount : Infinity);
+  if (isMobile() && remaining > 0) {
+    moreBtn.style.display = 'inline-flex';
+    moreBtn.textContent = `Ver más (${Math.min(BATCH, remaining)})`;
+  } else {
+    moreBtn.style.display = 'none';
+  }
+}
+
+// Filtros
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    showCount = isMobile() ? BATCH : Infinity; // reinicia paginado
+    renderGallery();
+  });
+});
+// Activa “All” al cargar
+const firstFilter = [...filterButtons].find(b => b.dataset.filter === 'all') || filterButtons[0];
+if (firstFilter) firstFilter.classList.add('active');
+
+// Botón “Ver más”
+moreBtn.addEventListener('click', () => {
+  showCount += BATCH;
+  renderGallery();
+});
+
+// Cambio de tamaño: recalcula (si pasa de móvil a desktop y viceversa)
+addEventListener('resize', renderGallery);
+
+// Tamaños S/M/L (igual que ya tenías)
+sizeButtons.forEach(b => {
+  b.addEventListener('click', () => {
+    sizeButtons.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const sz = b.dataset.size;
+    if (sz === 's') masonry.style.setProperty('--tile', '160px');
+    if (sz === 'm') masonry.style.setProperty('--tile', '220px');
+    if (sz === 'l') masonry.style.setProperty('--tile', '320px');
+  });
+});
+
+// Render inicial
+showCount = isMobile() ? BATCH : Infinity;
+renderGallery();
+
+
+// Estados por defecto al cargar (opcional)
+setActive(filterGroup, filterGroup.querySelector('[data-filter="all"]'));
+setActive(sizeGroup,   sizeGroup.querySelector('[data-size="s"]')); // o "m" si prefieres medio
+
 
         // lightbox
         const lb = document.getElementById('lightbox');
