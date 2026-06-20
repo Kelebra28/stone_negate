@@ -1,15 +1,12 @@
 
 
-// year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// reveal on scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); observer.unobserve(e.target); } });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// counters
 const counters = document.querySelectorAll('.counter');
 const counterObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -23,7 +20,6 @@ const counterObs = new IntersectionObserver((entries) => {
 }, { threshold: .6 });
 counters.forEach(c => counterObs.observe(c));
 
-// MOBILE NAV drawer
 const drawer = document.getElementById('drawer');
 const scrim = document.getElementById('scrim');
 const openBtn = document.getElementById('hamburger');
@@ -34,7 +30,6 @@ closeBtn.addEventListener('click', () => toggleDrawer(false));
 scrim.addEventListener('click', () => toggleDrawer(false));
 drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
 
-// FEATURED CAROUSEL controls (scroll-snap based)
 const carousel = document.querySelector('.carousel');
 const track = carousel.querySelector('.carousel-track');
 const prev = carousel.querySelector('.prev');
@@ -43,21 +38,18 @@ const scrollByAmount = () => Math.min(track.clientWidth * 0.95, 800);
 prev.addEventListener('click', () => track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }));
 next.addEventListener('click', () => track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }));
 
-// PARALLAX
 const pxSections = document.querySelectorAll('.parallax');
 const updateParallax = () => {
     pxSections.forEach(sec => {
         const r = sec.getBoundingClientRect();
         const speed = parseFloat(sec.dataset.speed || 0.25);
-        const y = (r.top - window.innerHeight) * -speed; // move slower than scroll
-        sec.style.setProperty('--py', y.toFixed(2) + 'px');
+        const y = (r.top - window.innerHeight) * -speed;         sec.style.setProperty('--py', y.toFixed(2) + 'px');
     });
 };
 updateParallax();
 window.addEventListener('scroll', updateParallax, { passive: true });
 window.addEventListener('resize', updateParallax);
 
-// GALLERY: filter + lightbox
 const filterButtons = document.querySelectorAll('#gallery .filters .btn');
 const gItems = Array.from(document.querySelectorAll('.g-item'));
 let activeFilter = 'all';
@@ -69,7 +61,6 @@ filterButtons.forEach(btn => btn.addEventListener('click', () => {
     });
 }));
 
-// Lightbox
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lightboxImg');
 const lbPrev = document.getElementById('lbPrev');

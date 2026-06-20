@@ -1,12 +1,12 @@
 :root {
-  --primary: #e8732e; /* brand terracotta */
+  --primary: #e8732e; 
   --primary-600: #d76522;
   --ink: #0f0f0f;
   --ink-2: #1f1f1f;
-  --stone: #c9c2b8; /* warm stone gray */
-  --sand: #f6f5f3; /* off-white background */
+  --stone: #c9c2b8; 
+  --sand: #f6f5f3; 
   --white: #fff;
-  --accent: #353535; /* deep neutral */
+  --accent: #353535; 
 }
 * {
   box-sizing: border-box;
@@ -68,7 +68,6 @@ a {
   background: var(--white);
 }
 
-/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -162,7 +161,6 @@ a {
   pointer-events: auto;
 }
 
-/* HERO */
 .hero {
   position: relative;
   isolation: isolate;
@@ -243,7 +241,6 @@ a {
   align-items: center;
 }
 
-/* SECTIONS */
 section {
   padding: 64px 0;
 }
@@ -264,7 +261,6 @@ section {
   color: #666;
 }
 
-/* SERVICES */
 .cards {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -308,7 +304,6 @@ section {
   color: #5a5a5a;
 }
 
-/* PROCESS */
 .process {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -342,7 +337,6 @@ section {
   font-size: 0.95rem;
 }
 
-/* PROJECTS */
 .filters {
   display: flex;
   gap: 0.5rem;
@@ -381,7 +375,6 @@ section {
   font-size: 0.92rem;
 }
 
-/* CAROUSEL (scroll-snap, responsive) */
 .carousel {
   position: relative;
 }
@@ -430,7 +423,6 @@ section {
   cursor: pointer;
 }
 
-/* PARALLAX SECTIONS */
 .parallax {
   position: relative;
   isolation: isolate;
@@ -459,7 +451,6 @@ section {
   z-index: -1;
 }
 
-/* STATS */
 .stats {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -482,7 +473,6 @@ section {
   color: #666;
 }
 
-/* CTA */
 .cta {
   background: linear-gradient(120deg, #ffffff 0%, #fff5ee 50%, #ffffff 100%);
   border: 1px solid #f0e9e4;
@@ -498,7 +488,6 @@ section {
   margin: 0.2rem 0;
 }
 
-/* FAQ */
 .faq {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -531,7 +520,6 @@ section {
   display: block;
 }
 
-/* CONTACT */
 .contact {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -575,7 +563,6 @@ form {
   margin: 0.4rem 0;
 }
 
-/* GALLERY (masonry + lightbox) */
 .masonry {
   columns: 4 280px;
   column-gap: 12px;
@@ -652,7 +639,6 @@ form {
   right: 24px;
 }
 
-/* FOOTER */
 footer {
   background: #0e0e0e;
   color: #d9d9d9;
@@ -675,7 +661,6 @@ footer a {
   font-size: 0.9rem;
 }
 
-/* REVEAL ANIMATIONS */
 .reveal {
   opacity: 0;
   transform: translateY(14px);
@@ -686,7 +671,6 @@ footer a {
   transform: none;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1200px) {
   .container {
     width: min(1100px, 92vw);

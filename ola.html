@@ -8,7 +8,6 @@
   <meta name="description"
     content="Architectural cast stone for architects and builders: surrounds, columns, balustrades, panels & restoration crafted with precision." />
 
-  <!-- Fonts / Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,9 +17,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* =========================================================
-       THEME / TOKENS
-    ========================================================= */
+
     :root {
       --brand: #E8732E;
       --brand-700: #cf6224;
@@ -86,9 +83,6 @@
       border-top: 1px solid var(--line);
     }
 
-    /* =========================================================
-       BUTTONS
-    ========================================================= */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -156,9 +150,6 @@
       border-radius: 12px;
     }
 
-    /* =========================================================
-       NAV
-    ========================================================= */
     .nav {
       position: sticky;
       top: 0;
@@ -268,7 +259,6 @@
       box-shadow: 0 10px 24px rgba(232, 115, 46, .4);
     }
 
-    /* Drawer (mobile menu) */
     .scrim {
       position: fixed;
       inset: 0;
@@ -331,9 +321,6 @@
       padding: 16px;
     }
 
-    /* =========================================================
-       HERO
-    ========================================================= */
     .hero {
       position: relative;
       isolation: isolate;
@@ -378,7 +365,6 @@
       max-width: 720px;
     }
 
-    /* ===== HERO BADGE 5× CENTRADO Y PROTAGÓNICO ===== */
     .hero-wrap {
       position: relative;
     }
@@ -464,7 +450,6 @@
       flex-wrap: wrap;
     }
 
-    /* Empuja el contenido del hero para que respire bajo el badge grande */
     .hero .copy {
       margin-top: clamp(340px, 42vh, 460px);
     }
@@ -483,9 +468,6 @@
       }
     }
 
-    /* =========================================================
-       SECTION TITLES
-    ========================================================= */
     section {
       padding: 68px 0;
     }
@@ -523,9 +505,6 @@
       box-shadow: 0 10px 24px rgba(232, 115, 46, .4);
     }
 
-    /* =========================================================
-       SERVICES CARDS
-    ========================================================= */
     .cards {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -595,9 +574,6 @@
       transform: scale(1.07);
     }
 
-    /* =========================================================
-       PARALLAX BAND
-    ========================================================= */
     .parallax {
       position: relative;
       color: var(--ink);
@@ -652,9 +628,6 @@
       color: var(--ink-dim);
     }
 
-    /* =========================================================
-       PROJECTS CAROUSEL
-    ========================================================= */
     .carousel {
       position: relative;
     }
@@ -726,9 +699,6 @@
       transform: scale(1.07);
     }
 
-    /* =========================================================
-       STATS
-    ========================================================= */
     .stats {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -774,9 +744,6 @@
       box-shadow: 0 40px 100px rgba(232, 115, 46, .22), 0 60px 140px rgba(0, 0, 0, 1);
     }
 
-/* =========================================================
-   GALLERY (versión simple, estable)
-========================================================= */
 .gallery-toolbar {
   display: flex;
   justify-content: space-between;
@@ -793,7 +760,7 @@
 }
 
 .view {
-  display: none; /* ocultamos el selector de tamaño por ahora */
+  display: none; 
 }
 
 .masonry {
@@ -802,7 +769,6 @@
   gap: 12px;
 }
 
-/* Cada item es una card de imagen */
 .g-item {
   position: relative;
   flex: 1 1 260px;
@@ -821,7 +787,6 @@
   object-fit: cover;
 }
 
-/* Hover suave */
 .g-item:hover {
   transform: translateY(-3px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 1);
@@ -832,14 +797,12 @@
   margin-top: 12px;
 }
 
-/* En desktop no necesitamos el botón */
 @media (min-width: 681px) {
   #galleryMore {
     display: none;
   }
 }
 
-/* Responsive columns */
 @media (max-width: 992px) {
   .g-item {
     max-width: calc(50% - 8px);
@@ -852,14 +815,10 @@
   }
 }
 
-/* Lightbox deshabilitado por completo */
 .lightbox {
   display: none !important;
 }
 
-    /* =========================================================
-       CONTACT
-    ========================================================= */
     .contact {
       display: grid;
       grid-template-columns: 1.2fr .8fr;
@@ -956,10 +915,7 @@
       filter: brightness(.7) contrast(1.05);
     }
 
-    /* =========================================================
-       PDF EMBED (debajo del hero) — RESPONSIVO, HORIZONTAL
-    ========================================================= */
-    .pdf-card {
+    .brochure-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -967,24 +923,26 @@
       overflow: hidden;
     }
 
-    .pdf-frame {
-      position: relative;
+    .brochure-preview {
+      display: block;
       width: 100%;
-      max-width: 100%;
-      aspect-ratio: 16 / 9;   /* ideal para PDF horizontal */
       background: #0b0b0b;
+      overflow: hidden;
     }
 
-    .pdf-frame iframe {
-      position: absolute;
-      inset: 0;
+    .brochure-preview img {
+      display: block;
       width: 100%;
-      height: 100%;
-      border: 0;
-      background: #0b0b0b;
+      height: auto;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    .pdf-actions {
+    .brochure-preview:hover img {
+      opacity: 0.9;
+      transform: scale(1.005);
+    }
+
+    .brochure-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -994,27 +952,11 @@
       background: #0d0d0d;
     }
 
-    .pdf-actions .small {
+    .brochure-actions .small {
       font-size: .85rem;
       color: var(--ink-dim);
     }
 
-    /* Ajustes sutiles por breakpoint */
-    @media (max-width: 992px) {
-      .pdf-frame {
-        aspect-ratio: 16 / 10;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .pdf-frame {
-        aspect-ratio: 16 / 11;
-      }
-    }
-
-    /* =========================================================
-       FLOATING CALL BUTTON
-    ========================================================= */
     .whatsapp {
       position: fixed;
       bottom: 20px;
@@ -1042,9 +984,6 @@
       color: #fff;
     }
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
     footer {
       background: #000;
       color: #d9d9d9;
@@ -1117,9 +1056,6 @@
       background: #0b0b0b;
     }
 
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
     .reveal {
       opacity: 0;
       transform: translateY(28px) scale(.96);
@@ -1136,9 +1072,6 @@
       box-shadow: none;
     }
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
     @media (max-width: 992px) {
       .menu {
         display: none;
@@ -1191,13 +1124,85 @@
       .map-embed {
         height: 180px;
         border-radius: 12px;
+    }
+
+    .nav-seal {
+      display: flex;
+      align-items: center;
+      margin-left: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .nav-seal img {
+      height: 26px;
+      width: auto;
+      opacity: 0.95;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-seal img:hover {
+      opacity: 1;
+    }
+
+    .hero-seal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-seal img {
+      height: clamp(30px, 4.5vw, 42px);
+      width: auto;
+      opacity: 0.9;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-seal img:hover {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    .footer-seal {
+      display: inline-block;
+      margin-top: 14px;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-seal img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-seal:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-seal {
+        display: none; 
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-brand-badge {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      .hero-brand-badge .hero-brand-left {
+        display: flex;
+        justify-content: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
+
   <nav class="nav" id="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top">
@@ -1205,6 +1210,9 @@
           <img src="./img/stonegatelogofinal.png" loading="lazy" alt="Stonegate Designs logo">
         </div>
         <h1>Stonegate Designs LLC</h1>
+      </a>
+      <a class="nav-seal" href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226" target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
+        <img src="./img/bbb1.png" alt="BBB Accredited Business" loading="lazy" width="200" height="42">
       </a>
 
       <div class="menu small">
@@ -1234,7 +1242,6 @@
       <button class="btn xs" id="closeDrawer" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
     </div>
 
-    <!-- === Navegación === -->
     <nav style="flex:1 1 auto;overflow-y:auto;">
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
@@ -1246,14 +1253,12 @@
     </nav>
   </aside>
 
-  <!-- HERO -->
   <header class="hero hero-parallax" id="top" data-speed="0.25">
     <div class="hero-wrap">
       <div class="hero-visual">
         <img src="./img/hero.JPG" loading="lazy" alt="Estate with cast stone details" />
       </div>
 
-      <!-- LOGO GRANDE -->
       <div class="hero-brand-badge">
         <div class="hero-brand-left">
           <div class="hero-mark">
@@ -1265,9 +1270,11 @@
           <div class="hero-brand-line2">Architectural Cast Stone</div>
           <div class="hero-brand-line3">Est. 1999</div>
         </div>
+        <a class="hero-seal" href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226" target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
+          <img src="./img/bbb1.png" alt="BBB Accredited Business" loading="lazy" width="200" height="42">
+        </a>
       </div>
 
-      <!-- CONTENIDO PRINCIPAL -->
       <div class="hero-content">
         <div class="copy reveal">
           <h2>Cast stone crafted to endure — and made to match your vision.</h2>
@@ -1285,29 +1292,24 @@
     </div>
   </header>
 
-  <!-- PDF SECTION (debajo del hero) -->
   <section id="specs" class="reveal">
     <div class="container">
       <div class="section-title">
         <h3>Brochure / Specs</h3>
       </div>
 
-      <div class="pdf-card">
-        <div class="pdf-frame">
-          <iframe
-            src="./docs/sgbrochure1-90.pdf#toolbar=0&navpanes=0&view=FitH&zoom=page-width"
-            loading="lazy"
-            title="Stonegate — Brochure / Specs">
-          </iframe>
-        </div>
+      <div class="brochure-card">
+        <a class="brochure-preview" href="./img/image001.png" target="_blank" rel="noopener" title="Open Image Brochure">
+          <img src="./img/image001.png" alt="Stonegate Designs Brochure preview" loading="lazy" width="1426" height="1103">
+        </a>
 
-        <div class="pdf-actions">
+        <div class="brochure-actions">
           <span class="small">Brochure / Specs</span>
           <div>
-            <a class="btn xs pill" href="./docs/sgbrochure1-90.pdf" target="_blank" rel="noopener">
-              <i class="fa-solid fa-file-pdf"></i> Abrir
+            <a class="btn xs pill" href="./img/image001.png" target="_blank" rel="noopener">
+              <i class="fa-solid fa-image"></i> Abrir
             </a>
-            <a class="btn xs pill" href="./docs/sgbrochure1-90.pdf" download>
+            <a class="btn xs pill" href="./img/image001.png" download>
               <i class="fa-solid fa-download"></i> Descargar
             </a>
           </div>
@@ -1317,7 +1319,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services" class="reveal">
     <div class="container">
       <div class="section-title">
@@ -1377,7 +1378,6 @@
     </div>
   </section>
 
-  <!-- PARALLAX BAND -->
   <section class="parallax engineered" style="--bg:url('./img/gallery/Entries/entries3.jpg')" data-speed="0.22">
     <div class="container reveal">
       <h3>Engineered quality, timeless look</h3>
@@ -1386,7 +1386,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS CAROUSEL -->
   <section id="projects" class="reveal">
     <div class="container">
       <div class="section-title">
@@ -1413,7 +1412,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <section class="reveal">
     <div class="container">
       <div class="stats">
@@ -1441,14 +1439,13 @@
     </div>
   </section>
 
-<!-- GALLERY -->
 <section id="gallery" class="reveal">
     <div class="container">
       <div class="section-title">
         <h3>Project gallery</h3>
         <span class="muted">Curated works</span>
       </div>
-  
+
       <div class="gallery-toolbar">
         <div class="filters" id="filterGroup">
           <button class="btn xs pill" data-filter="all">All</button>
@@ -1467,15 +1464,13 @@
           <button class="btn xs" data-size="l">L</button>
         </div>
       </div>
-  
-      <!-- SOLO UN masonry AQUÍ -->
+
       <div class="masonry" id="masonry">
-        <!-- Balustrades -->
+
         <div class="g-item" data-cat="balustrades">
           <img loading="lazy" src="./img/gallery/Balustrades/balustrades0.jpg" alt="Balustrades">
         </div>
-  
-        <!-- Columns -->
+
         <div class="g-item" data-cat="columns">
           <img loading="lazy" src="./img/gallery/Columns/columns0.JPG" alt="Columns">
         </div>
@@ -1491,8 +1486,7 @@
         <div class="g-item" data-cat="columns">
           <img loading="lazy" src="./img/gallery/Columns/columns4.JPG" alt="Columns">
         </div>
-  
-        <!-- Commercial -->
+
         <div class="g-item" data-cat="commercial">
           <img loading="lazy" src="./img/gallery/Commercial/commercial1.jpg" alt="Commercial">
         </div>
@@ -1514,8 +1508,7 @@
         <div class="g-item" data-cat="commercial">
           <img loading="lazy" src="./img/gallery/Commercial/commercial7.JPG" alt="Commercial">
         </div>
-  
-        <!-- Entries -->
+
         <div class="g-item" data-cat="entry">
           <img loading="lazy" src="./img/gallery/Entries/entries0.jpg" alt="Entries">
         </div>
@@ -1573,8 +1566,7 @@
         <div class="g-item" data-cat="entry">
           <img loading="lazy" src="./img/gallery/Entries/entries18.jpg" alt="Entries">
         </div>
-  
-        <!-- Fireplaces -->
+
         <div class="g-item" data-cat="fireplaces">
           <img loading="lazy" src="./img/gallery/Fireplaces/Fireplaces0.JPG" alt="Fireplaces">
         </div>
@@ -1638,8 +1630,7 @@
         <div class="g-item" data-cat="fireplaces">
           <img loading="lazy" src="./img/gallery/Fireplaces/Fireplaces20.JPG" alt="Fireplaces">
         </div>
-  
-        <!-- Medallions -->
+
         <div class="g-item" data-cat="medallions">
           <img loading="lazy" src="./img/gallery/Medallions/medallions0.jpg" alt="Medallions">
         </div>
@@ -1655,8 +1646,7 @@
         <div class="g-item" data-cat="medallions">
           <img loading="lazy" src="./img/gallery/Medallions/medallions4.JPG" alt="Medallions">
         </div>
-  
-        <!-- Monument -->
+
         <div class="g-item" data-cat="monument">
           <img loading="lazy" src="./img/gallery/Monument/monument0.JPG" alt="Monument">
         </div>
@@ -1703,13 +1693,12 @@
           <img loading="lazy" src="./img/gallery/Monument/monument14.jpg" alt="Monument">
         </div>
       </div>
-  
+
       <div class="gallery-more">
         <button id="galleryMore" class="btn xs pill">View more</button>
       </div>
     </div>
-  
-    <!-- Lightbox (markup conservado pero deshabilitado por CSS) -->
+
     <figure class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
       <div class="lightbox-inner">
         <img id="lbImg" alt="Project photo" />
@@ -1720,9 +1709,7 @@
       </div>
     </figure>
   </section>
-  
 
-  <!-- CONTACT -->
   <section id="contact" class="reveal">
     <div class="container">
       <div class="section-title">
@@ -1786,7 +1773,6 @@
             <li><i class="fa-regular fa-clock"></i> Mon–Fri 8:00–16:30</li>
           </ul>
 
-          <!-- Google Map -->
           <div class="map-embed">
             <iframe
               src="https://www.google.com/maps?q=Stonegate%20Designs%20LLC%20[City]%20[State]&output=embed"
@@ -1801,12 +1787,10 @@
     </div>
   </section>
 
-  <!-- CALL FLOATING -->
   <a href="tel:+525619959385" class="whatsapp" aria-label="Call Stonegate Designs LLC at 56 1995 9385">
     <i class="fa-solid fa-phone"></i>
   </a>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="cols">
@@ -1819,6 +1803,9 @@
           </div>
           <p class="muted">Architectural cast stone for residential, commercial and civic projects. Custom
             molds, color matching and shop drawings provided.</p>
+          <a class="footer-seal" href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226" target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
+            <img src="./img/bbb2.png" alt="BBB Accredited Business" loading="lazy" width="300" height="100">
+          </a>
         </div>
 
         <div class="col">
@@ -1849,11 +1836,9 @@
   </footer>
 
   <script>
-    // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    // NAV active link + hero tint
-    const nav = document.getElementById('nav');
+        const nav = document.getElementById('nav');
     const topHero = document.querySelector('.hero-parallax');
     const sections = [...document.querySelectorAll('section, header.hero')];
     const links = [...document.querySelectorAll('.menu a[href^="#"]')];
@@ -1874,8 +1859,7 @@
     }, { rootMargin: '-50% 0px -45% 0px', threshold: 0 });
     sections.forEach(s => spy.observe(s));
 
-    // Drawer mobile menu
-    const drawer = document.getElementById('drawer');
+        const drawer = document.getElementById('drawer');
     const scrim = document.getElementById('scrim');
     const openBtn = document.getElementById('hamburger');
     const closeBtn = document.getElementById('closeDrawer');
@@ -1890,8 +1874,7 @@
     scrim.addEventListener('click', () => toggleDrawer(false));
     drawer.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => toggleDrawer(false)); });
 
-    // Parallax (hero + band)
-    const pxSections = document.querySelectorAll('.parallax, .hero-parallax');
+        const pxSections = document.querySelectorAll('.parallax, .hero-parallax');
     const mReduce = matchMedia('(prefers-reduced-motion: reduce)');
     const mMobile = matchMedia('(max-width: 768px)');
 
@@ -1909,16 +1892,14 @@
     }
     requestAnimationFrame(parallaxTick);
 
-    // Reveal on scroll
-    const revealObs = new IntersectionObserver((entries) => {
+        const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('show'); revealObs.unobserve(e.target); }
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    // Carousel controls
-    const carousel = document.querySelector('.carousel');
+        const carousel = document.querySelector('.carousel');
     const track = carousel.querySelector('.carousel-track');
     const prev = carousel.querySelector('.prev');
     const next = carousel.querySelector('.next');
@@ -1926,14 +1907,12 @@
 
     prev.addEventListener('click', () => { track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }) });
     next.addEventListener('click', () => { track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }) });
-// GALLERY: filtros simples (sin "view more")
 const masonry = document.getElementById('masonry');
 const allItems = Array.from(masonry.querySelectorAll('.g-item'));
 const filterGroup = document.getElementById('filterGroup');
 const filterButtons = filterGroup.querySelectorAll('.btn');
 const moreBtn = document.getElementById('galleryMore');
 
-// aplica filtro
 function applyFilter(cat) {
   allItems.forEach(it => {
     const match = (cat === 'all') || (it.dataset.cat === cat);
@@ -1941,13 +1920,11 @@ function applyFilter(cat) {
   });
 }
 
-// marca botón activo
 function setActiveButton(btn) {
   filterButtons.forEach(b => b.classList.remove('active', 'is-active'));
   if (btn) btn.classList.add('active', 'is-active');
 }
 
-// click en filtros
 filterGroup.addEventListener('click', (e) => {
   const btn = e.target.closest('button[data-filter]');
   if (!btn) return;
@@ -1956,12 +1933,10 @@ filterGroup.addEventListener('click', (e) => {
   applyFilter(cat);
 });
 
-// estado inicial
 const allBtn = [...filterButtons].find(b => b.dataset.filter === 'all');
 setActiveButton(allBtn);
 applyFilter('all');
 
-// ocultamos el botón "View more" por ahora
 if (moreBtn) {
   moreBtn.style.display = 'none';
 }
