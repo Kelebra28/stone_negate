@@ -7,7 +7,7 @@
   <title>Stonegate Designs LLC | Architectural Cast Stone</title>
   <meta name="description"
     content="Architectural cast stone for architects and builders: surrounds, columns, balustrades, panels & restoration crafted with precision." />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +18,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-
     :root {
       --brand: #E8732E;
       --brand-700: #cf6224;
@@ -745,80 +744,80 @@
       box-shadow: 0 40px 100px rgba(232, 115, 46, .22), 0 60px 140px rgba(0, 0, 0, 1);
     }
 
-.gallery-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 8px 0 12px;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+    .gallery-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0 12px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-.filters .btn {
-  padding: .48rem .9rem;
-  border-color: #444;
-  font-size: .8rem;
-}
+    .filters .btn {
+      padding: .48rem .9rem;
+      border-color: #444;
+      font-size: .8rem;
+    }
 
-.view {
-  display: none; 
-}
+    .view {
+      display: none;
+    }
 
-.masonry {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+    .masonry {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-.g-item {
-  position: relative;
-  flex: 1 1 260px;
-  max-width: calc(33.333% - 8px);
-  border-radius: 14px;
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .9);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
+    .g-item {
+      position: relative;
+      flex: 1 1 260px;
+      max-width: calc(33.333% - 8px);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .9);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
 
-.g-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .g-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.g-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 1);
-}
+    .g-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 1);
+    }
 
-.gallery-more {
-  text-align: center;
-  margin-top: 12px;
-}
+    .gallery-more {
+      text-align: center;
+      margin-top: 12px;
+    }
 
-@media (min-width: 681px) {
-  #galleryMore {
-    display: none;
-  }
-}
+    @media (min-width: 681px) {
+      #galleryMore {
+        display: none;
+      }
+    }
 
-@media (max-width: 992px) {
-  .g-item {
-    max-width: calc(50% - 8px);
-  }
-}
+    @media (max-width: 992px) {
+      .g-item {
+        max-width: calc(50% - 8px);
+      }
+    }
 
-@media (max-width: 600px) {
-  .g-item {
-    max-width: 100%;
-  }
-}
+    @media (max-width: 600px) {
+      .g-item {
+        max-width: 100%;
+      }
+    }
 
-.lightbox {
-  display: none !important;
-}
+    .lightbox {
+      display: none !important;
+    }
 
     .contact {
       display: grid;
@@ -1125,79 +1124,223 @@
       .map-embed {
         height: 180px;
         border-radius: 12px;
-    }
+      }
 
-    .nav-seal {
+      .nav-seal {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      .nav-seal img {
+        height: 26px;
+        width: auto;
+        opacity: 0.95;
+        transition: opacity 0.2s ease;
+      }
+
+      .nav-seal img:hover {
+        opacity: 1;
+      }
+
+      .hero-seal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .hero-seal img {
+        height: clamp(30px, 4.5vw, 42px);
+        width: auto;
+        opacity: 0.9;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .hero-seal img:hover {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      .footer-seal {
+        display: inline-block;
+        margin-top: 14px;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease;
+      }
+
+      .footer-seal img {
+        height: 48px;
+        width: auto;
+        display: block;
+      }
+
+      .footer-seal:hover {
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 992px) {
+        .nav-seal {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero-brand-badge {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .hero-brand-badge .hero-brand-left {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+    .load-more-card {
+      cursor: pointer;
       display: flex;
-      align-items: center;
-      margin-left: 0.5rem;
-      flex-shrink: 0;
-    }
-
-    .nav-seal img {
-      height: 26px;
-      width: auto;
-      opacity: 0.95;
-      transition: opacity 0.2s ease;
-    }
-
-    .nav-seal img:hover {
-      opacity: 1;
-    }
-
-    .hero-seal {
-      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .hero-seal img {
-      height: clamp(30px, 4.5vw, 42px);
-      width: auto;
-      opacity: 0.9;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .hero-seal img:hover {
-      opacity: 1;
-      transform: scale(1.02);
-    }
-
-    .footer-seal {
-      display: inline-block;
-      margin-top: 14px;
-      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.65) 0%, rgba(10, 10, 10, 0.85) 100%);
+      border: 1px solid rgba(232, 115, 46, 0.35);
+      min-height: 220px;
+      position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .8), 0 0 30px rgba(232, 115, 46, 0.15);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .load-more-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('./img/gallery/Entries/entries2.png');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px) brightness(0.3);
+      z-index: 1;
+      opacity: 0.75;
+      transition: transform 0.5s ease;
+    }
+
+    .load-more-card:hover::before {
+      transform: scale(1.08);
+    }
+
+    .load-more-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .load-more-card .count-badge {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(232, 115, 46, 0.5);
+      line-height: 1;
+    }
+
+    .load-more-card .action-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .load-more-card .action-text i {
       transition: transform 0.2s ease;
     }
 
-    .footer-seal img {
-      height: 48px;
-      width: auto;
-      display: block;
+    .load-more-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(232, 115, 46, 0.3), 0 40px 100px rgba(0, 0, 0, 0.95);
     }
 
-    .footer-seal:hover {
-      transform: translateY(-2px);
+    .load-more-card:hover .action-text i {
+      transform: translateX(4px);
     }
 
-    @media (max-width: 768px) {
-      .nav-seal {
-        display: none; 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 560px) {
-      .hero-brand-badge {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-      .hero-brand-badge .hero-brand-left {
-        display: flex;
-        justify-content: center;
-      }
+    .g-item.category-cover {
+      cursor: pointer;
+    }
+
+    .g-item.category-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .category-label {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      z-index: 2;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .category-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .category-cta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-collapse-container {
+      width: 100%;
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
     }
   </style>
 </head>
@@ -1212,7 +1355,9 @@
         </div>
         <h1>Stonegate Designs LLC</h1>
       </a>
-      <a class="nav-seal" href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226" target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
+      <a class="nav-seal"
+        href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226"
+        target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
         <img src="./img/bbb1.png" alt="BBB Accredited Business" loading="lazy" width="200" height="42">
       </a>
 
@@ -1235,8 +1380,7 @@
   <aside class="drawer" id="drawer" aria-label="Mobile menu">
     <div class="hdr">
       <div class="brand" style="gap:.6rem">
-        <strong
-          style="font-family:'Playfair Display',serif;font-size:.95rem;letter-spacing:-.03em;color:#fff;">
+        <strong style="font-family:'Playfair Display',serif;font-size:.95rem;letter-spacing:-.03em;color:#fff;">
           Stonegate Designs LLC
         </strong>
       </div>
@@ -1271,7 +1415,9 @@
           <div class="hero-brand-line2">Architectural Cast Stone</div>
           <div class="hero-brand-line3">Est. 1999</div>
         </div>
-        <a class="hero-seal" href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226" target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
+        <a class="hero-seal"
+          href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226"
+          target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
           <img src="./img/bbb1.png" alt="BBB Accredited Business" loading="lazy" width="200" height="42">
         </a>
       </div>
@@ -1300,8 +1446,10 @@
       </div>
 
       <div class="brochure-card">
-        <a class="brochure-preview" href="./img/image001.png" target="_blank" rel="noopener" title="Open Image Brochure">
-          <img src="./img/image001.png" alt="Stonegate Designs Brochure preview" loading="lazy" width="1426" height="1103">
+        <a class="brochure-preview" href="./img/image001.png" target="_blank" rel="noopener"
+          title="Open Image Brochure">
+          <img src="./img/image001.png" alt="Stonegate Designs Brochure preview" loading="lazy" width="1426"
+            height="1103">
         </a>
 
         <div class="brochure-actions">
@@ -1327,7 +1475,8 @@
       </div>
       <div class="cards">
         <article class="card">
-          <div class="media"><img src="./img/gallery/Entries/entries2.png" loading="lazy" alt="Entryways & Surrounds"></div>
+          <div class="media"><img src="./img/gallery/Entries/entries2.png" loading="lazy" alt="Entryways & Surrounds">
+          </div>
           <div class="body">
             <h4>Front Entries and Window Surrounds</h4>
             <p>Eeach piece adds elegance, depth, and architectural distinction to any facade.</p>
@@ -1335,7 +1484,8 @@
         </article>
 
         <article class="card">
-          <div class="media"><img src="./img/gallery/Columns/columns6.jpg" loading="lazy" alt="Columns & Capitals"></div>
+          <div class="media"><img src="./img/gallery/Columns/columns6.jpg" loading="lazy" alt="Columns & Capitals">
+          </div>
           <div class="body">
             <h4>Columns & Capitals</h4>
             <p>Bring classical beauty and
@@ -1344,7 +1494,8 @@
         </article>
 
         <article class="card">
-          <div class="media"><img src="./img/gallery/Balustrades/balustrades0.jpg" loading="lazy" alt="Balustrades & Railings"></div>
+          <div class="media"><img src="./img/gallery/Balustrades/balustrades0.jpg" loading="lazy"
+              alt="Balustrades & Railings"></div>
           <div class="body">
             <h4>Balustrades & Railings</h4>
             <p>Complete systems with hand rails,
@@ -1353,7 +1504,8 @@
         </article>
 
         <article class="card">
-          <div class="media"><img src="./img/gallery/Medallions/medallions0.png" loading="lazy" alt="Sills, Bands & Trim"></div>
+          <div class="media"><img src="./img/gallery/Medallions/medallions0.png" loading="lazy"
+              alt="Sills, Bands & Trim"></div>
           <div class="body">
             <h4>Custom Medallions</h4>
             <p>Add a unique focal point to your design with our custom cast stone medallions.</p>
@@ -1361,7 +1513,8 @@
         </article>
 
         <article class="card">
-          <div class="media"><img src="./img/gallery/Monument/monument3.jpg" loading="lazy" alt="Panels & Cladding"></div>
+          <div class="media"><img src="./img/gallery/Monument/monument3.jpg" loading="lazy" alt="Panels & Cladding">
+          </div>
           <div class="body">
             <h4>Monument Signs</h4>
             <p>Showcase your brand or property with distinction.</p>
@@ -1369,7 +1522,8 @@
         </article>
 
         <article class="card">
-          <div class="media"><img src="./img/gallery/Fireplaces/Fireplaceeditada9.png" loading="lazy" alt="Restoration & Matching"></div>
+          <div class="media"><img src="./img/gallery/Fireplaces/Fireplaceeditada9.png" loading="lazy"
+              alt="Restoration & Matching"></div>
           <div class="body">
             <h4>Custom Fireplaces</h4>
             <p>Elevate your space with the warmth and elegance of our cast stone fireplaces.</p>
@@ -1399,15 +1553,21 @@
           <button class="c-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
         <div class="carousel-track" id="featuredTrack">
-          <figure class="slide"><img src="./img/carrusel/DSC00309.JPG" loading="lazy" alt="Cast stone entryway"></figure>
+          <figure class="slide"><img src="./img/carrusel/DSC00309.JPG" loading="lazy" alt="Cast stone entryway">
+          </figure>
           <figure class="slide"><img src="./img/carrusel/DSC00771.JPG" loading="lazy" alt="Ionic columns"></figure>
           <figure class="slide"><img src="./img/carrusel/DSC01005.JPG" loading="lazy" alt="Balustrade terrace"></figure>
           <figure class="slide"><img src="./img/carrusel/DSCN0209.JPG" loading="lazy" alt="Panel cladding"></figure>
-          <figure class="slide"><img src="./img/gallery/Entries/entries0.jpg" loading="lazy" alt="Panel cladding"></figure>
-          <figure class="slide"><img src="./img/gallery/Entries/entries1.jpg" loading="lazy" alt="Panel cladding"></figure>
-          <figure class="slide"><img src="./img/gallery/Entries/entries2.jpg" loading="lazy" alt="Panel cladding"></figure>
-          <figure class="slide"><img src="./img/gallery/Entries/entries3.jpg" loading="lazy" alt="Panel cladding"></figure>
-          <figure class="slide"><img src="./img/gallery/Entries/entries9.jpg" loading="lazy" alt="Panel cladding"></figure>
+          <figure class="slide"><img src="./img/gallery/Entries/entries0.jpg" loading="lazy" alt="Panel cladding">
+          </figure>
+          <figure class="slide"><img src="./img/gallery/Entries/entries1.jpg" loading="lazy" alt="Panel cladding">
+          </figure>
+          <figure class="slide"><img src="./img/gallery/Entries/entries2.jpg" loading="lazy" alt="Panel cladding">
+          </figure>
+          <figure class="slide"><img src="./img/gallery/Entries/entries3.jpg" loading="lazy" alt="Panel cladding">
+          </figure>
+          <figure class="slide"><img src="./img/gallery/Entries/entries9.jpg" loading="lazy" alt="Panel cladding">
+          </figure>
         </div>
       </div>
     </div>
@@ -1440,7 +1600,7 @@
     </div>
   </section>
 
-<section id="gallery" class="reveal">
+  <section id="gallery" class="reveal">
     <div class="container">
       <div class="section-title">
         <h3>Project gallery</h3>
@@ -1722,7 +1882,8 @@
       </div>
 
       <div class="contact">
-        <form method="POST" action="https://formsubmit.co/customerservice@stonegateco.net" enctype="multipart/form-data">
+        <form method="POST" action="https://formsubmit.co/customerservice@stonegateco.net"
+          enctype="multipart/form-data">
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" required placeholder="Your full name" />
@@ -1778,11 +1939,8 @@
           </ul>
 
           <div class="map-embed">
-            <iframe
-              src="https://www.google.com/maps?q=Stonegate%20Designs%20LLC%20[City]%20[State]&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
+            <iframe src="https://www.google.com/maps?q=Stonegate%20Designs%20LLC%20[City]%20[State]&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
               aria-label="Stonegate Designs LLC map">
             </iframe>
           </div>
@@ -1801,13 +1959,16 @@
         <div class="col">
           <div class="brand" style="margin-bottom:8px">
             <div class="mark" aria-hidden="true" style="width:38px;height:38px;">
-              <img loading="lazy" src="./img/stonegatelogofinal.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+              <img loading="lazy" src="./img/stonegatelogofinal.png" alt=""
+                style="width:100%;height:100%;object-fit:cover;">
             </div>
             <h1>Stonegate Designs LLC</h1>
           </div>
           <p class="muted">Architectural cast stone for residential, commercial and civic projects. Custom
             molds, color matching and shop drawings provided.</p>
-          <a class="footer-seal" href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226" target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
+          <a class="footer-seal"
+            href="https://www.bbb.org/us/tx/houston/profile/mason-contractors/stonegate-designs-llc-0915-90075226"
+            target="_blank" rel="noopener" title="Stonegate Designs LLC BBB Business Review">
             <img src="./img/bbb2.png" alt="BBB Accredited Business" loading="lazy" width="300" height="100">
           </a>
         </div>
@@ -1840,9 +2001,9 @@
   </footer>
 
   <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        const nav = document.getElementById('nav');
+    const nav = document.getElementById('nav');
     const topHero = document.querySelector('.hero-parallax');
     const sections = [...document.querySelectorAll('section, header.hero')];
     const links = [...document.querySelectorAll('.menu a[href^="#"]')];
@@ -1863,7 +2024,7 @@
     }, { rootMargin: '-50% 0px -45% 0px', threshold: 0 });
     sections.forEach(s => spy.observe(s));
 
-        const drawer = document.getElementById('drawer');
+    const drawer = document.getElementById('drawer');
     const scrim = document.getElementById('scrim');
     const openBtn = document.getElementById('hamburger');
     const closeBtn = document.getElementById('closeDrawer');
@@ -1878,9 +2039,9 @@
     scrim.addEventListener('click', () => toggleDrawer(false));
     drawer.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => toggleDrawer(false)); });
 
-        const pxSections = document.querySelectorAll('.parallax, .hero-parallax');
+    const pxSections = document.querySelectorAll('.parallax, .hero-parallax');
     const mReduce = matchMedia('(prefers-reduced-motion: reduce)');
-    const mMobile = matchMedia('(max-width: 768px)');
+    const mMobile = matchMedia('(max-width: 992px)');
 
     function parallaxTick() {
       const disabled = mReduce.matches || mMobile.matches;
@@ -1896,14 +2057,14 @@
     }
     requestAnimationFrame(parallaxTick);
 
-        const revealObs = new IntersectionObserver((entries) => {
+    const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('show'); revealObs.unobserve(e.target); }
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-        const carousel = document.querySelector('.carousel');
+    const carousel = document.querySelector('.carousel');
     const track = carousel.querySelector('.carousel-track');
     const prev = carousel.querySelector('.prev');
     const next = carousel.querySelector('.next');
@@ -1911,39 +2072,185 @@
 
     prev.addEventListener('click', () => { track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' }) });
     next.addEventListener('click', () => { track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' }) });
-const masonry = document.getElementById('masonry');
-const allItems = Array.from(masonry.querySelectorAll('.g-item'));
-const filterGroup = document.getElementById('filterGroup');
-const filterButtons = filterGroup.querySelectorAll('.btn');
-const moreBtn = document.getElementById('galleryMore');
+    const masonry = document.getElementById('masonry');
+    const allItems = Array.from(masonry.querySelectorAll('.g-item'));
+    const filterGroup = document.getElementById('filterGroup');
+    const filterButtons = filterGroup.querySelectorAll('.btn');
+    const moreBtn = document.getElementById('galleryMore');
 
-function applyFilter(cat) {
-  allItems.forEach(it => {
-    const match = (cat === 'all') || (it.dataset.cat === cat);
-    it.style.display = match ? '' : 'none';
-  });
-}
+    if (moreBtn) {
+      moreBtn.style.display = 'none';
+    }
 
-function setActiveButton(btn) {
-  filterButtons.forEach(b => b.classList.remove('active', 'is-active'));
-  if (btn) btn.classList.add('active', 'is-active');
-}
+    const categoryNames = {
+      entry: 'Entries',
+      columns: 'Columns',
+      balustrades: 'Balustrades',
+      fireplaces: 'Fireplaces',
+      commercial: 'Commercial',
+      medallions: 'Medallions',
+      monument: 'Monument'
+    };
 
-filterGroup.addEventListener('click', (e) => {
-  const btn = e.target.closest('button[data-filter]');
-  if (!btn) return;
-  const cat = btn.dataset.filter;
-  setActiveButton(btn);
-  applyFilter(cat);
-});
+    const loadMoreCard = document.createElement('div');
+    loadMoreCard.className = 'g-item load-more-card';
+    loadMoreCard.innerHTML = `
+      <div class="load-more-content">
+        <span class="count-badge"></span>
+        <span class="action-text">Ver más <i class="fa-solid fa-arrow-down"></i></span>
+      </div>
+    `;
 
-const allBtn = [...filterButtons].find(b => b.dataset.filter === 'all');
-setActiveButton(allBtn);
-applyFilter('all');
+    const collapseBtn = document.createElement('div');
+    collapseBtn.className = 'gallery-collapse-container';
+    collapseBtn.innerHTML = `
+      <button class="btn xs pill" style="border-color: rgba(255, 255, 255, 0.35); color: #fff; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px);">
+        <i class="fa-solid fa-chevron-up"></i> Contraer
+      </button>
+    `;
 
-if (moreBtn) {
-  moreBtn.style.display = 'none';
-}
+    loadMoreCard.addEventListener('click', () => {
+      const activeBtn = filterGroup.querySelector('.btn.active, .btn.is-active');
+      const cat = activeBtn ? activeBtn.dataset.filter : 'all';
+      revealAll(cat);
+    });
+
+    collapseBtn.addEventListener('click', () => {
+      const activeBtn = filterGroup.querySelector('.btn.active, .btn.is-active');
+      const cat = activeBtn ? activeBtn.dataset.filter : 'all';
+      isExpanded[cat] = false;
+      applyFilter(cat);
+      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    let isMobile = window.innerWidth < 992;
+    let activeCategory = 'all';
+    let isExpanded = {};
+
+    function revealAll(cat) {
+      isExpanded[cat] = true;
+      applyFilter(cat);
+    }
+
+    function applyFilter(cat) {
+      activeCategory = cat;
+
+      allItems.forEach(it => {
+        it.style.display = 'none';
+        it.style.animation = '';
+        it.classList.remove('category-cover');
+        const label = it.querySelector('.category-label');
+        if (label) {
+          it.removeChild(label);
+        }
+      });
+
+      if (loadMoreCard.parentNode) {
+        loadMoreCard.parentNode.removeChild(loadMoreCard);
+      }
+      if (collapseBtn.parentNode) {
+        collapseBtn.parentNode.removeChild(collapseBtn);
+      }
+
+      const matchedItems = allItems.filter(it => cat === 'all' || it.dataset.cat === cat);
+      const totalCount = matchedItems.length;
+
+      if (isMobile) {
+        if (cat === 'all') {
+          const categories = [...filterButtons]
+            .map(btn => btn.dataset.filter)
+            .filter(c => c !== 'all');
+
+          categories.forEach(c => {
+            const firstItem = allItems.find(it => it.dataset.cat === c);
+            if (firstItem) {
+              firstItem.style.display = '';
+              firstItem.classList.add('category-cover');
+
+              const label = document.createElement('div');
+              label.className = 'category-label';
+              const count = allItems.filter(it => it.dataset.cat === c).length;
+              label.innerHTML = `
+                <div class="category-title">${categoryNames[c] || c}</div>
+                <div class="category-cta">Ver galería (${count}) <i class="fa-solid fa-arrow-right"></i></div>
+              `;
+              firstItem.appendChild(label);
+              firstItem.style.animation = 'fadeIn 0.4s ease forwards';
+            }
+          });
+        } else {
+          if (totalCount > 10 && !isExpanded[cat]) {
+            for (let i = 0; i < 9; i++) {
+              matchedItems[i].style.display = '';
+              matchedItems[i].style.animation = 'fadeIn 0.4s ease forwards';
+            }
+
+            const remaining = totalCount - 9;
+            const countBadge = loadMoreCard.querySelector('.count-badge');
+            countBadge.textContent = `+${remaining}`;
+
+            const ninthItem = matchedItems[8];
+            ninthItem.after(loadMoreCard);
+            loadMoreCard.style.display = '';
+            loadMoreCard.style.animation = 'fadeIn 0.4s ease forwards';
+          } else {
+            matchedItems.forEach((it) => {
+              it.style.display = '';
+              it.style.animation = 'fadeIn 0.4s ease forwards';
+            });
+
+            if (totalCount > 10 && isExpanded[cat]) {
+              masonry.appendChild(collapseBtn);
+            }
+          }
+        }
+      } else {
+        matchedItems.forEach((it) => {
+          it.style.display = '';
+          it.style.animation = 'fadeIn 0.4s ease forwards';
+        });
+      }
+    }
+
+    function setActiveButton(btn) {
+      filterButtons.forEach(b => b.classList.remove('active', 'is-active'));
+      if (btn) btn.classList.add('active', 'is-active');
+    }
+
+    filterGroup.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-filter]');
+      if (!btn) return;
+      const cat = btn.dataset.filter;
+      setActiveButton(btn);
+      applyFilter(cat);
+    });
+
+    masonry.addEventListener('click', (e) => {
+      const cover = e.target.closest('.category-cover');
+      if (cover && isMobile && activeCategory === 'all') {
+        e.preventDefault();
+        e.stopPropagation();
+        const cat = cover.dataset.cat;
+        const targetBtn = [...filterButtons].find(b => b.dataset.filter === cat);
+        if (targetBtn) {
+          setActiveButton(targetBtn);
+          applyFilter(cat);
+          document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      const wasMobile = isMobile;
+      isMobile = window.innerWidth < 992;
+      if (wasMobile !== isMobile) {
+        applyFilter(activeCategory);
+      }
+    });
+
+    const allBtn = [...filterButtons].find(b => b.dataset.filter === 'all');
+    setActiveButton(allBtn);
+    applyFilter('all');
 
   </script>
 </body>

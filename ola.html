@@ -1181,7 +1181,7 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .nav-seal {
         display: none; 
       }
@@ -1196,7 +1196,149 @@
       .hero-brand-badge .hero-brand-left {
         display: flex;
         justify-content: center;
+    }
+
+    .load-more-card {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.65) 0%, rgba(10, 10, 10, 0.85) 100%);
+      border: 1px solid rgba(232, 115, 46, 0.35);
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .8), 0 0 30px rgba(232, 115, 46, 0.15);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .load-more-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('./img/gallery/Entries/entries2.png');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px) brightness(0.3);
+      z-index: 1;
+      opacity: 0.75;
+      transition: transform 0.5s ease;
+    }
+
+    .load-more-card:hover::before {
+      transform: scale(1.08);
+    }
+
+    .load-more-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .load-more-card .count-badge {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(232, 115, 46, 0.5);
+      line-height: 1;
+    }
+
+    .load-more-card .action-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .load-more-card .action-text i {
+      transition: transform 0.2s ease;
+    }
+
+    .load-more-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(232, 115, 46, 0.3), 0 40px 100px rgba(0, 0, 0, 0.95);
+    }
+
+    .load-more-card:hover .action-text i {
+      transform: translateX(4px);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .g-item.category-cover {
+      cursor: pointer;
+    }
+
+    .g-item.category-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .category-label {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      z-index: 2;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .category-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .category-cta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-collapse-container {
+      width: 100%;
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
     }
   </style>
 </head>
@@ -1876,7 +2018,7 @@
 
         const pxSections = document.querySelectorAll('.parallax, .hero-parallax');
     const mReduce = matchMedia('(prefers-reduced-motion: reduce)');
-    const mMobile = matchMedia('(max-width: 768px)');
+    const mMobile = matchMedia('(max-width: 992px)');
 
     function parallaxTick() {
       const disabled = mReduce.matches || mMobile.matches;
@@ -1913,11 +2055,138 @@ const filterGroup = document.getElementById('filterGroup');
 const filterButtons = filterGroup.querySelectorAll('.btn');
 const moreBtn = document.getElementById('galleryMore');
 
+if (moreBtn) {
+  moreBtn.style.display = 'none';
+}
+
+const categoryNames = {
+  entry: 'Entries',
+  columns: 'Columns',
+  balustrades: 'Balustrades',
+  fireplaces: 'Fireplaces',
+  commercial: 'Commercial',
+  medallions: 'Medallions',
+  monument: 'Monument'
+};
+
+const loadMoreCard = document.createElement('div');
+loadMoreCard.className = 'g-item load-more-card';
+loadMoreCard.innerHTML = `
+  <div class="load-more-content">
+    <span class="count-badge"></span>
+    <span class="action-text">Ver más <i class="fa-solid fa-arrow-down"></i></span>
+  </div>
+`;
+
+const collapseBtn = document.createElement('div');
+collapseBtn.className = 'gallery-collapse-container';
+collapseBtn.innerHTML = `
+  <button class="btn xs pill" style="border-color: rgba(255, 255, 255, 0.35); color: #fff; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px);">
+    <i class="fa-solid fa-chevron-up"></i> Contraer
+  </button>
+`;
+
+loadMoreCard.addEventListener('click', () => {
+  const activeBtn = filterGroup.querySelector('.btn.active, .btn.is-active');
+  const cat = activeBtn ? activeBtn.dataset.filter : 'all';
+  revealAll(cat);
+});
+
+collapseBtn.addEventListener('click', () => {
+  const activeBtn = filterGroup.querySelector('.btn.active, .btn.is-active');
+  const cat = activeBtn ? activeBtn.dataset.filter : 'all';
+  isExpanded[cat] = false;
+  applyFilter(cat);
+  document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+});
+
+let isMobile = window.innerWidth < 992;
+let activeCategory = 'all';
+let isExpanded = {};
+
+function revealAll(cat) {
+  isExpanded[cat] = true;
+  applyFilter(cat);
+}
+
 function applyFilter(cat) {
+  activeCategory = cat;
+
   allItems.forEach(it => {
-    const match = (cat === 'all') || (it.dataset.cat === cat);
-    it.style.display = match ? '' : 'none';
+    it.style.display = 'none';
+    it.style.animation = '';
+    it.classList.remove('category-cover');
+    const label = it.querySelector('.category-label');
+    if (label) {
+      it.removeChild(label);
+    }
   });
+
+  if (loadMoreCard.parentNode) {
+    loadMoreCard.parentNode.removeChild(loadMoreCard);
+  }
+  if (collapseBtn.parentNode) {
+    collapseBtn.parentNode.removeChild(collapseBtn);
+  }
+
+  const matchedItems = allItems.filter(it => cat === 'all' || it.dataset.cat === cat);
+  const totalCount = matchedItems.length;
+
+  if (isMobile) {
+    if (cat === 'all') {
+      const categories = [...filterButtons]
+        .map(btn => btn.dataset.filter)
+        .filter(c => c !== 'all');
+
+      categories.forEach(c => {
+        const firstItem = allItems.find(it => it.dataset.cat === c);
+        if (firstItem) {
+          firstItem.style.display = '';
+          firstItem.classList.add('category-cover');
+
+          const label = document.createElement('div');
+          label.className = 'category-label';
+          const count = allItems.filter(it => it.dataset.cat === c).length;
+          label.innerHTML = `
+            <div class="category-title">${categoryNames[c] || c}</div>
+            <div class="category-cta">Ver galería (${count}) <i class="fa-solid fa-arrow-right"></i></div>
+          `;
+          firstItem.appendChild(label);
+          firstItem.style.animation = 'fadeIn 0.4s ease forwards';
+        }
+      });
+    } else {
+      if (totalCount > 10 && !isExpanded[cat]) {
+        for (let i = 0; i < 9; i++) {
+          matchedItems[i].style.display = '';
+          matchedItems[i].style.animation = 'fadeIn 0.4s ease forwards';
+        }
+
+        const remaining = totalCount - 9;
+        const countBadge = loadMoreCard.querySelector('.count-badge');
+        countBadge.textContent = `+${remaining}`;
+
+        const ninthItem = matchedItems[8];
+        ninthItem.after(loadMoreCard);
+        loadMoreCard.style.display = '';
+        loadMoreCard.style.animation = 'fadeIn 0.4s ease forwards';
+      } else {
+        matchedItems.forEach((it) => {
+          it.style.display = '';
+          it.style.animation = 'fadeIn 0.4s ease forwards';
+        });
+
+        if (totalCount > 10 && isExpanded[cat]) {
+          masonry.appendChild(collapseBtn);
+        }
+      }
+    }
+  } else {
+    matchedItems.forEach((it) => {
+      it.style.display = '';
+      it.style.animation = 'fadeIn 0.4s ease forwards';
+    });
+  }
 }
 
 function setActiveButton(btn) {
@@ -1933,13 +2202,32 @@ filterGroup.addEventListener('click', (e) => {
   applyFilter(cat);
 });
 
+masonry.addEventListener('click', (e) => {
+  const cover = e.target.closest('.category-cover');
+  if (cover && isMobile && activeCategory === 'all') {
+    e.preventDefault();
+    e.stopPropagation();
+    const cat = cover.dataset.cat;
+    const targetBtn = [...filterButtons].find(b => b.dataset.filter === cat);
+    if (targetBtn) {
+      setActiveButton(targetBtn);
+      applyFilter(cat);
+      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
+
+window.addEventListener('resize', () => {
+  const wasMobile = isMobile;
+  isMobile = window.innerWidth < 992;
+  if (wasMobile !== isMobile) {
+    applyFilter(activeCategory);
+  }
+});
+
 const allBtn = [...filterButtons].find(b => b.dataset.filter === 'all');
 setActiveButton(allBtn);
 applyFilter('all');
-
-if (moreBtn) {
-  moreBtn.style.display = 'none';
-}
 
   </script>
 </body>
